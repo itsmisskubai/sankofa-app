@@ -359,25 +359,8 @@ const STORIES = [
 ]
   }
 ];
-const PALETTE = {
-  cream: "#F3EBDD",
-  sand: "#D8C2A6",
-  clay: "#A55F2A",
-  burnt: "#D96A1B",
-  gold: "#D8A928",
-  charcoal: "#161311",
-  charcoalSoft: "#241D19",
-  brown: "#4E2D1A",
-  line: "rgba(40, 27, 17, 0.12)",
-  white: "#FFF9F0",
-};
-
-function getTodayISO() {
-  return new Date().toLocaleDateString("en-CA");
-}
-
 function formatDate(dateString) {
-  const d = new Date(dateString);
+  const d = new Date(dateString + "T12:00:00");
   return d.toLocaleDateString("en-US", {
     weekday: "long",
     month: "long",
@@ -385,6 +368,28 @@ function formatDate(dateString) {
     year: "numeric",
   });
 }
+
+function shortDate(dateString) {
+  const d = new Date(dateString + "T12:00:00");
+  return d.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
+}
+
+const PALETTE = {
+  cream: "#F5EDE0",
+  paper: "#FFF9F0",
+  charcoal: "#161311",
+  charcoalSoft: "#2B2420",
+  textSoft: "#6E6258",
+  clay: "#C87F4F",
+  orange: "#E87B1E",
+  gold: "#D7A928",
+  brown: "#A5642A",
+  line: "rgba(32, 22, 16, 0.12)",
+  white: "#FFFFFF",
+};
 
 function Label({ children, light = false }) {
   return (
@@ -394,7 +399,7 @@ function Label({ children, light = false }) {
         fontWeight: 900,
         letterSpacing: "0.18em",
         textTransform: "uppercase",
-        color: light ? "rgba(255,249,240,0.72)" : PALETTE.clay,
+        color: light ? "rgba(255,255,255,0.78)" : PALETTE.clay,
         marginBottom: "10px",
       }}
     >
@@ -409,15 +414,15 @@ function Pill({ children, dark = false }) {
       style={{
         display: "inline-flex",
         alignItems: "center",
-        padding: "10px 14px",
+        justifyContent: "center",
+        padding: "10px 16px",
         borderRadius: "999px",
-        background: dark ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.55)",
-        border: dark
-          ? "1px solid rgba(255,255,255,0.10)"
-          : `1px solid ${PALETTE.line}`,
-        color: dark ? PALETTE.white : PALETTE.charcoalSoft,
+        background: dark ? "rgba(255,255,255,0.08)" : PALETTE.paper,
+        border: dark ? "1px solid rgba(255,255,255,0.10)" : `1px solid ${PALETTE.line}`,
+        color: dark ? "rgba(255,255,255,0.92)" : PALETTE.charcoalSoft,
         fontSize: "14px",
         fontWeight: 800,
+        whiteSpace: "nowrap",
       }}
     >
       {children}
@@ -425,11 +430,37 @@ function Pill({ children, dark = false }) {
   );
 }
 
+function PatternStrip() {
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+        gap: "10px",
+        maxWidth: "720px",
+        margin: "0 auto 18px",
+      }}
+    >
+      {[0, 1, 2, 3].map((i) => (
+        <div
+          key={i}
+          style={{
+            height: "18px",
+            borderRadius: "999px",
+            background:
+              "linear-gradient(90deg, #E87B1E 0%, #E87B1E 33%, #D7A928 33%, #D7A928 66%, #A5642A 66%, #A5642A 100%)",
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 function SectionBand({ title, children, dark = false }) {
   return (
     <section
       style={{
-        background: dark ? PALETTE.charcoal : PALETTE.white,
+        background: dark ? PALETTE.charcoal : PALETTE.paper,
         color: dark ? PALETTE.white : PALETTE.charcoal,
         borderRadius: "28px",
         padding: "28px",
@@ -437,7 +468,7 @@ function SectionBand({ title, children, dark = false }) {
         boxShadow: dark
           ? "0 18px 40px rgba(0,0,0,0.18)"
           : "0 18px 40px rgba(48, 28, 14, 0.06)",
-        marginBottom: "22px",
+        marginBottom: "20px",
       }}
     >
       <Label light={dark}>{title}</Label>
@@ -446,221 +477,64 @@ function SectionBand({ title, children, dark = false }) {
   );
 }
 
-function PatternStrip({ dark = false }) {
+function ImageModal({ imageSrc, imageAlt, onClose }) {
+  if (!imageSrc) return null;
+
   return (
     <div
+      onClick={onClose}
       style={{
-        height: "18px",
-        borderRadius: "999px",
-        margin: "12px 0 18px",
-        background: dark
-          ? `
-            repeating-linear-gradient(
-              90deg,
-              #D96A1B 0px,
-              #D96A1B 26px,
-              #D8A928 26px,
-              #D8A928 52px,
-              #A55F2A 52px,
-              #A55F2A 78px,
-              #241D19 78px,
-              #241D19 104px
-            )
-          `
-          : `
-            repeating-linear-gradient(
-              90deg,
-              rgba(217,106,27,0.95) 0px,
-              rgba(217,106,27,0.95) 26px,
-              rgba(216,169,40,0.95) 26px,
-              rgba(216,169,40,0.95) 52px,
-              rgba(165,95,42,0.95) 52px,
-              rgba(165,95,42,0.95) 78px,
-              rgba(36,29,25,0.9) 78px,
-              rgba(36,29,25,0.9) 104px
-            )
-          `,
-      }}
-    />
-  );
-}
-
-function StoryPreviewCard({ story, onOpen, accent = false }) {
-  return (
-    <button
-      onClick={() => onOpen(story)}
-      style={{
-        width: "100%",
-        textAlign: "left",
-        background: accent ? PALETTE.charcoal : PALETTE.white,
-        color: accent ? PALETTE.white : PALETTE.charcoal,
-        border: accent ? "none" : `1px solid ${PALETTE.line}`,
-        borderRadius: "26px",
-        padding: "24px",
-        cursor: "pointer",
-        boxShadow: accent
-          ? "0 18px 40px rgba(0,0,0,0.18)"
-          : "0 18px 40px rgba(48, 28, 14, 0.06)",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "10px",
-          marginBottom: "14px",
-        }}
-      >
-        <Pill dark={accent}>{story.category}</Pill>
-        <Pill dark={accent}>{story.readingTime}</Pill>
-      </div>
-
-      <div
-        style={{
-          fontSize: "clamp(28px, 4vw, 54px)",
-          lineHeight: 0.95,
-          fontWeight: 900,
-          textTransform: "uppercase",
-          letterSpacing: "-0.03em",
-          marginBottom: "12px",
-        }}
-      >
-        {story.title}
-      </div>
-
-      <div
-        style={{
-          fontSize: "18px",
-          lineHeight: 1.6,
-          color: accent ? "rgba(255,249,240,0.76)" : "#5E534A",
-          maxWidth: "760px",
-          marginBottom: "16px",
-        }}
-      >
-        {story.subtitle}
-      </div>
-
-      {story.heroImage && (
-        <img
-          src={story.heroImage}
-          alt={story.title}
-          style={{
-            width: "100%",
-            height: "320px",
-            objectFit: "cover",
-            borderRadius: "20px",
-            display: "block",
-            marginBottom: "16px",
-          }}
-        />
-      )}
-
-      <div
-        style={{
-          fontSize: "16px",
-          lineHeight: 1.8,
-          color: accent ? PALETTE.white : PALETTE.charcoalSoft,
-          marginBottom: "18px",
-        }}
-      >
-        {story.openingLine}
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "10px",
-          color: accent ? "rgba(255,249,240,0.72)" : "#7B6B5C",
-          fontSize: "14px",
-          fontWeight: 700,
-        }}
-      >
-        <span>{story.region}</span>
-        <span>•</span>
-        <span>{story.period}</span>
-        <span>•</span>
-        <span>{formatDate(story.date)}</span>
-      </div>
-    </button>
-  );
-}
-
-function ArchiveCard({ story, onOpen }) {
-  return (
-    <button
-      onClick={() => onOpen(story)}
-      style={{
-        width: "100%",
-        textAlign: "left",
-        background: PALETTE.white,
-        border: `1px solid ${PALETTE.line}`,
-        borderRadius: "22px",
+        position: "fixed",
+        inset: 0,
+        background: "rgba(0,0,0,0.88)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         padding: "20px",
-        cursor: "pointer",
-        boxShadow: "0 12px 28px rgba(48, 28, 14, 0.05)",
+        zIndex: 9999,
       }}
     >
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
-          gap: "18px",
-          alignItems: "flex-start",
-          flexWrap: "wrap",
+          position: "relative",
+          width: "100%",
+          maxWidth: "1100px",
         }}
       >
-        <div style={{ flex: 1, minWidth: "240px" }}>
-          <div
-            style={{
-              fontSize: "13px",
-              fontWeight: 900,
-              textTransform: "uppercase",
-              letterSpacing: "0.14em",
-              color: PALETTE.clay,
-              marginBottom: "8px",
-            }}
-          >
-            {story.category}
-          </div>
-
-          <div
-            style={{
-              fontSize: "28px",
-              lineHeight: 1,
-              fontWeight: 900,
-              textTransform: "uppercase",
-              letterSpacing: "-0.03em",
-              color: PALETTE.charcoal,
-              marginBottom: "8px",
-            }}
-          >
-            {story.title}
-          </div>
-
-          <div
-            style={{
-              fontSize: "16px",
-              lineHeight: 1.65,
-              color: "#6C5E53",
-            }}
-          >
-            {story.subtitle}
-          </div>
-        </div>
-
-        <div
+        <button
+          onClick={onClose}
           style={{
-            display: "grid",
-            gap: "8px",
-            minWidth: "180px",
+            position: "absolute",
+            top: "-48px",
+            right: "0",
+            background: "transparent",
+            border: "none",
+            color: "#fff",
+            fontSize: "15px",
+            fontWeight: 900,
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+            cursor: "pointer",
           }}
         >
-          <Pill>{story.readingTime}</Pill>
-          <Pill>{formatDate(story.date)}</Pill>
-        </div>
+          Close
+        </button>
+
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            width: "100%",
+            maxHeight: "85vh",
+            objectFit: "contain",
+            display: "block",
+            borderRadius: "18px",
+            boxShadow: "0 24px 60px rgba(0,0,0,0.35)",
+          }}
+        />
       </div>
-    </button>
+    </div>
   );
 }
 
@@ -668,7 +542,7 @@ function VisualCard({ visual, onImageClick }) {
   return (
     <div
       style={{
-        background: PALETTE.white,
+        background: PALETTE.paper,
         border: `1px solid ${PALETTE.line}`,
         borderRadius: "22px",
         overflow: "hidden",
@@ -732,90 +606,22 @@ function VisualCard({ visual, onImageClick }) {
     </div>
   );
 }
-function ImageModal({ imageSrc, imageAlt, onClose }) {
-  if (!imageSrc) return null;
 
-  return (
-    <div
-      onClick={onClose}
-      style={{
-        position: "fixed",
-        inset: 0,
-        background: "rgba(0,0,0,0.86)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "20px",
-        zIndex: 9999,
-        cursor: "zoom-out",
-      }}
-    >
-      <div
-        style={{
-          position: "relative",
-          maxWidth: "1100px",
-          width: "100%",
-        }}
-      >
-        <button
-          onClick={onClose}
-          style={{
-            position: "absolute",
-            top: "-48px",
-            right: "0",
-            background: "transparent",
-            border: "none",
-            color: "#fff",
-            fontSize: "16px",
-            fontWeight: 900,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            cursor: "pointer",
-          }}
-        >
-          Close
-        </button>
-
-        <img
-          src={imageSrc}
-          alt={imageAlt}
-          onClick={(e) => e.stopPropagation()}
-          style={{
-            width: "100%",
-            maxHeight: "85vh",
-            objectFit: "contain",
-            display: "block",
-            borderRadius: "18px",
-            boxShadow: "0 24px 60px rgba(0,0,0,0.35)",
-            cursor: "default",
-          }}
-        />
-      </div>
-    </div>
-  );
-}
 function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
   if (!todayStory) {
-  return (
-    <div style={{ padding: "40px", color: "#fff" }}>
-      No story available for today.
-    </div>
-  );
-}
+    return (
+      <div style={{ padding: "40px", color: PALETTE.charcoal }}>
+        No story available for today.
+      </div>
+    );
+  }
+
   return (
     <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "22px 18px 80px" }}>
       <section
         style={{
-          background: `
-            linear-gradient(135deg,rgba(22,19,17,0.98), rgba(36,29,25,0.96)),
-            repeating-linear-gradient(
-              135deg,
-              rgba(255,255,255,0.02) 0px,
-              rgba(255,255,255,0.02) 16px,
-              rgba(0,0,0,0.02) 16px,
-              rgba(0,0,0,0.02) 32px
-            )
-          `,
+          background:
+            "linear-gradient(135deg, rgba(22,19,17,0.98), rgba(36,29,25,0.96))",
           color: PALETTE.white,
           borderRadius: "34px",
           padding: "34px 26px",
@@ -858,7 +664,7 @@ function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
           its architecture, its people, and the worlds it built.
         </div>
 
-        <PatternStrip dark />
+        <PatternStrip />
 
         <div
           style={{
@@ -871,8 +677,8 @@ function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
           }}
         >
           <Pill dark>{formatDate(todayISO)}</Pill>
-          {todayStory && <Pill dark>{todayStory.readingTime}</Pill>}
-          {todayStory && <Pill dark>{todayStory.category}</Pill>}
+          <Pill dark>{todayStory.readingTime}</Pill>
+          <Pill dark>{todayStory.category}</Pill>
         </div>
 
         <div
@@ -886,7 +692,7 @@ function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
           <button
             onClick={() => onOpenStory(todayStory)}
             style={{
-              background: PALETTE.burnt,
+              background: PALETTE.orange,
               color: PALETTE.white,
               border: "none",
               borderRadius: "999px",
@@ -923,133 +729,121 @@ function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
         </div>
       </section>
 
+      <SectionBand title="Today’s story" dark>
+        <div
+          style={{
+            maxWidth: "920px",
+            margin: "0 auto",
+            textAlign: "center",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "clamp(34px, 6vw, 72px)",
+              lineHeight: 0.94,
+              fontWeight: 900,
+              textTransform: "uppercase",
+              letterSpacing: "-0.05em",
+              marginBottom: "14px",
+            }}
+          >
+            {todayStory.title}
+          </div>
+
+          <div
+            style={{
+              fontSize: "18px",
+              lineHeight: 1.7,
+              color: "rgba(255,249,240,0.76)",
+              maxWidth: "760px",
+              margin: "0 auto 18px",
+            }}
+          >
+            {todayStory.subtitle}
+          </div>
+
+          {todayStory.heroImage && (
+            <img
+              src={todayStory.heroImage}
+              alt={todayStory.title}
+              style={{
+                width: "100%",
+                maxWidth: "820px",
+                height: "340px",
+                objectFit: "cover",
+                borderRadius: "22px",
+                display: "block",
+                margin: "0 auto 18px",
+              }}
+            />
+          )}
+
+          <div
+            style={{
+              fontSize: "16px",
+              lineHeight: 1.85,
+              color: PALETTE.white,
+              maxWidth: "760px",
+              margin: "0 auto",
+            }}
+          >
+            {todayStory.openingLine}
+          </div>
+        </div>
+      </SectionBand>
+
       <div
         style={{
           display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
           gap: "18px",
         }}
       >
-        <SectionBand title="Today’s story" dark>
-          <div
-            style={{
-              maxWidth: "920px",
-              margin: "0 auto",
-              textAlign: "center",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                flexWrap: "wrap",
-                gap: "10px",
-                marginBottom: "16px",
-              }}
-            >
-              <Pill dark>{todayStory.category}</Pill>
-              <Pill dark>{todayStory.readingTime}</Pill>
-            </div>
-
-            <div
-              style={{
-                fontSize: "clamp(34px, 6vw, 72px)",
-                lineHeight: 0.94,
-                fontWeight: 900,
-                textTransform: "uppercase",
-                letterSpacing: "-0.05em",
-                marginBottom: "14px",
-              }}
-            >
-              {todayStory.title}
-            </div>
-
-            <div
-              style={{
-                fontSize: "18px",
-                lineHeight: 1.7,
-                color: "rgba(255,249,240,0.76)",
-                maxWidth: "760px",
-                margin: "0 auto 18px",
-              }}
-            >
-              {todayStory.subtitle}
-            </div>
-
-            {todayStory.heroImage && (
-              <img
-                src={todayStory.heroImage}
-                alt={todayStory.title}
+        <SectionBand title="Remember this">
+          <div style={{ display: "grid", gap: "12px" }}>
+            {todayStory.takeaways?.slice(0, 3).map((item, i) => (
+              <div
+                key={i}
                 style={{
-                  width: "100%",
-                  maxWidth: "820px",
-                  height: "340px",
-                  objectFit: "cover",
-                  borderRadius: "22px",
-                  display: "block",
-                  margin: "0 auto 18px",
+                  fontSize: "15px",
+                  lineHeight: 1.75,
+                  color: PALETTE.charcoalSoft,
                 }}
-              />
-            )}
-
-            <div
-              style={{
-                fontSize: "16px",
-                lineHeight: 1.85,
-                color: PALETTE.white,
-                maxWidth: "760px",
-                margin: "0 auto",
-              }}
-            >
-              {todayStory.openingLine}
-            </div>
+              >
+                {item}
+              </div>
+            ))}
           </div>
         </SectionBand>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "18px",
-          }}
-        >
-          <SectionBand title="Remember this">
-            <div style={{ display: "grid", gap: "12px" }}>
-              {todayStory.takeaways.slice(0, 3).map((item, i) => (
-                <div
-                  key={i}
-                  style={{
-                    fontSize: "15px",
-                    lineHeight: 1.75,
-                    color: PALETTE.charcoalSoft,
-                  }}
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </SectionBand>
-
-          <SectionBand title="Reflection" dark>
-            <div
-              style={{
-                fontSize: "20px",
-                lineHeight: 1.8,
-                fontWeight: 800,
-                color: PALETTE.white,
-              }}
-            >
-              {todayStory.reflection}
-            </div>
-          </SectionBand>
-        </div>
+        <SectionBand title="Reflection" dark>
+          <div
+            style={{
+              fontSize: "20px",
+              lineHeight: 1.8,
+              fontWeight: 800,
+              color: PALETTE.white,
+            }}
+          >
+            {todayStory.reflection}
+          </div>
+        </SectionBand>
       </div>
     </div>
   );
 }
 
 function StoryView({ story, onBack, onImageClick }) {
+  if (!story) {
+    return (
+      <div style={{ padding: "40px", color: "#fff" }}>
+        No story selected.
+      </div>
+    );
+  }
+
   return (
-    <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "22px 18px 80px" }}>
+    <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "24px 16px 80px" }}>
       <button
         onClick={onBack}
         style={{
@@ -1070,16 +864,8 @@ function StoryView({ story, onBack, onImageClick }) {
 
       <section
         style={{
-          background: `
-            linear-gradient(135deg, rgba(22,19,17,0.98), rgba(36,29,25,0.96)),
-            repeating-linear-gradient(
-              135deg,
-              rgba(255,255,255,0.02) 0px,
-              rgba(255,255,255,0.02) 16px,
-              rgba(0,0,0,0.02) 16px,
-              rgba(0,0,0,0.02) 32px
-            )
-          `,
+          background:
+            "linear-gradient(135deg, rgba(22,19,17,0.98), rgba(36,29,25,0.96))",
           color: PALETTE.white,
           borderRadius: "34px",
           padding: "34px 26px",
@@ -1087,7 +873,7 @@ function StoryView({ story, onBack, onImageClick }) {
           marginBottom: "22px",
         }}
       >
-        <Label light>Today’s Ritual</Label>
+        <Label light>Today's Ritual</Label>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginBottom: "14px" }}>
           <Pill dark>{story.category}</Pill>
@@ -1121,7 +907,7 @@ function StoryView({ story, onBack, onImageClick }) {
           {story.subtitle}
         </div>
 
-        <PatternStrip dark />
+        <PatternStrip />
 
         <div
           style={{
@@ -1142,39 +928,39 @@ function StoryView({ story, onBack, onImageClick }) {
       </section>
 
       {story.heroImage && (
-  <section
-    style={{
-      marginBottom: "22px",
-      borderRadius: "30px",
-      overflow: "hidden",
-      boxShadow: "0 18px 40px rgba(48, 28, 14, 0.08)",
-    }}
-  >
-    <button
-      onClick={() => onImageClick?.(story.heroImage, story.title)}
-      style={{
-        width: "100%",
-        padding: 0,
-        border: "none",
-        background: "transparent",
-        cursor: "zoom-in",
-        display: "block",
-      }}
-    >
-      <img
-        src={story.heroImage}
-        alt={story.title}
-        style={{
-          width: "100%",
-          height: "min(520px, 60vw)",
-          minHeight: "280px",
-          objectFit: "cover",
-          display: "block",
-        }}
-      />
-    </button>
-  </section>
-)}
+        <section
+          style={{
+            marginBottom: "22px",
+            borderRadius: "30px",
+            overflow: "hidden",
+            boxShadow: "0 18px 40px rgba(48, 28, 14, 0.08)",
+          }}
+        >
+          <button
+            onClick={() => onImageClick?.(story.heroImage, story.title)}
+            style={{
+              width: "100%",
+              padding: 0,
+              border: "none",
+              background: "transparent",
+              cursor: "zoom-in",
+              display: "block",
+            }}
+          >
+            <img
+              src={story.heroImage}
+              alt={story.title}
+              style={{
+                width: "100%",
+                height: "min(520px, 60vw)",
+                minHeight: "280px",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </button>
+        </section>
+      )}
 
       <SectionBand title="Opening line" dark>
         <div
@@ -1198,19 +984,32 @@ function StoryView({ story, onBack, onImageClick }) {
 
       <SectionBand title="The story">
         <div style={{ display: "grid", gap: "16px" }}>
-          {story.story.map((paragraph, i) => (
-            <p
-              key={i}
-              style={{
-                margin: 0,
-                fontSize: "17px",
-                lineHeight: 1.9,
-                color: PALETTE.charcoal,
-              }}
-            >
-              {paragraph}
-            </p>
-          ))}
+          {Array.isArray(story.story)
+            ? story.story.map((paragraph, i) => (
+                <p
+                  key={i}
+                  style={{
+                    margin: 0,
+                    fontSize: "17px",
+                    lineHeight: 1.9,
+                    color: PALETTE.charcoal,
+                  }}
+                >
+                  {paragraph}
+                </p>
+              ))
+            : (
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "17px",
+                  lineHeight: 1.9,
+                  color: PALETTE.charcoal,
+                }}
+              >
+                {story.story}
+              </p>
+            )}
         </div>
       </SectionBand>
 
@@ -1243,10 +1042,10 @@ function StoryView({ story, onBack, onImageClick }) {
             }}
           >
             {story.visuals.map((visual, i) => (
-              <VisualCard 
-              key={i} 
-              visual={visual} 
-              onImageClick={onImageClick}
+              <VisualCard
+                key={i}
+                visual={visual}
+                onImageClick={onImageClick}
               />
             ))}
           </div>
@@ -1262,7 +1061,7 @@ function StoryView({ story, onBack, onImageClick }) {
       >
         <SectionBand title="Remember this">
           <div style={{ display: "grid", gap: "14px" }}>
-            {story.takeaways.map((item, i) => (
+            {story.takeaways?.map((item, i) => (
               <div
                 key={i}
                 style={{
@@ -1277,7 +1076,7 @@ function StoryView({ story, onBack, onImageClick }) {
                     width: "30px",
                     height: "30px",
                     borderRadius: "999px",
-                    background: PALETTE.burnt,
+                    background: PALETTE.orange,
                     color: PALETTE.white,
                     fontSize: "14px",
                     fontWeight: 900,
@@ -1320,6 +1119,84 @@ function StoryView({ story, onBack, onImageClick }) {
   );
 }
 
+function ArchiveCard({ story, onOpen }) {
+  return (
+    <button
+      onClick={() => onOpen(story)}
+      style={{
+        width: "100%",
+        textAlign: "left",
+        background: PALETTE.paper,
+        border: `1px solid ${PALETTE.line}`,
+        borderRadius: "22px",
+        padding: "20px",
+        cursor: "pointer",
+        boxShadow: "0 12px 28px rgba(48, 28, 14, 0.05)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          gap: "18px",
+          alignItems: "flex-start",
+          flexWrap: "wrap",
+        }}
+      >
+        <div style={{ flex: 1, minWidth: "240px" }}>
+          <div
+            style={{
+              fontSize: "13px",
+              fontWeight: 900,
+              textTransform: "uppercase",
+              letterSpacing: "0.14em",
+              color: PALETTE.clay,
+              marginBottom: "8px",
+            }}
+          >
+            {story.category}
+          </div>
+
+          <div
+            style={{
+              fontSize: "28px",
+              lineHeight: 1,
+              fontWeight: 900,
+              textTransform: "uppercase",
+              letterSpacing: "-0.03em",
+              color: PALETTE.charcoal,
+              marginBottom: "8px",
+            }}
+          >
+            {story.title}
+          </div>
+
+          <div
+            style={{
+              fontSize: "16px",
+              lineHeight: 1.65,
+              color: PALETTE.textSoft,
+            }}
+          >
+            {story.subtitle}
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gap: "8px",
+            minWidth: "180px",
+          }}
+        >
+          <Pill>{story.readingTime}</Pill>
+          <Pill>{shortDate(story.date)}</Pill>
+        </div>
+      </div>
+    </button>
+  );
+}
+
 function ArchiveView({ stories, todayISO, onOpen, onBack }) {
   const pastStories = stories.filter((story) => story.date < todayISO);
   const todayStory = stories.find((story) => story.date === todayISO);
@@ -1347,16 +1224,8 @@ function ArchiveView({ stories, todayISO, onOpen, onBack }) {
 
       <section
         style={{
-          background: `
-            linear-gradient(135deg, rgba(22,19,17,0.98), rgba(36,29,25,0.96)),
-            repeating-linear-gradient(
-              135deg,
-              rgba(255,255,255,0.02) 0px,
-              rgba(255,255,255,0.02) 16px,
-              rgba(0,0,0,0.02) 16px,
-              rgba(0,0,0,0.02) 32px
-            )
-          `,
+          background:
+            "linear-gradient(135deg, rgba(22,19,17,0.98), rgba(36,29,25,0.96))",
           color: PALETTE.white,
           borderRadius: "34px",
           padding: "34px 26px",
@@ -1429,13 +1298,13 @@ function ArchiveView({ stories, todayISO, onOpen, onBack }) {
 }
 
 export default function App() {
-  const [todayISO, setTodayISO] = useState(getTodayISO());
+  const [todayISO, setTodayISO] = useState(TODAY);
   const [view, setView] = useState("home");
   const [selectedStory, setSelectedStory] = useState(null);
   const [activeImage, setActiveImage] = useState(null);
 
   useEffect(() => {
-    setTodayISO(getTodayISO());
+    setTodayISO(TODAY);
   }, []);
 
   const sortedStories = [...STORIES].sort(
@@ -1443,7 +1312,9 @@ export default function App() {
   );
 
   const todayStory =
-    sortedStories.find((story) => story.date === todayISO) || sortedStories[0];
+    sortedStories.length > 0
+      ? sortedStories.find((story) => story.date === todayISO) || sortedStories[0]
+      : null;
 
   function openStory(story) {
     setSelectedStory(story);
@@ -1453,22 +1324,21 @@ export default function App() {
   function goHome() {
     setSelectedStory(null);
     setView("home");
-    function openImage(imageSrc, imageAlt) {
-  setActiveImage({ src: imageSrc, alt: imageAlt });
-}
+  }
 
-function closeImage() {
-  setActiveImage(null);
-}
+  function openImage(imageSrc, imageAlt) {
+    setActiveImage({ src: imageSrc, alt: imageAlt });
+  }
+
+  function closeImage() {
+    setActiveImage(null);
   }
 
   return (
     <div
       style={{
         minHeight: "100vh",
-        background: `
-          linear-gradient(180deg, #C67A30 0%, #A55F2A 120px, ${PALETTE.cream} 120px, ${PALETTE.cream} 100%)
-        `,
+        background: `linear-gradient(180deg, #C67A30 0%, #A55F2A 120px, ${PALETTE.cream} 120px, ${PALETTE.cream} 100%)`,
         color: PALETTE.charcoal,
         fontFamily:
           'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
@@ -1493,12 +1363,18 @@ function closeImage() {
       )}
 
       {view === "story" && selectedStory && (
-  <StoryView
-    story={selectedStory}
-    onBack={goHome}
-    onImageClick={openImage}
-  />
-)}
+        <StoryView
+          story={selectedStory}
+          onBack={goHome}
+          onImageClick={openImage}
+        />
+      )}
+
+      <ImageModal
+        imageSrc={activeImage?.src}
+        imageAlt={activeImage?.alt}
+        onClose={closeImage}
+      />
     </div>
   );
 }
