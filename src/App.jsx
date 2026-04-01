@@ -705,7 +705,7 @@ function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
               textAlign: "center",
             }}
           >
-            Enter today’s story
+            Enter today's story
           </button>
 
           <button
@@ -729,7 +729,7 @@ function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
         </div>
       </section>
 
-      <SectionBand title="Today’s story" dark>
+      <SectionBand title="Today's story" dark>
         <div
           style={{
             maxWidth: "920px",
@@ -1119,10 +1119,16 @@ function StoryView({ story, onBack, onImageClick }) {
   );
 }
 
-function ArchiveCard({ story, onOpen }) {
+function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
   return (
     <button
-      onClick={() => onOpen(story)}
+      onClick={() => {
+        if (locked) {
+          onLockedClick?.();
+        } else {
+          onOpen(story);
+        }
+      }}
       style={{
         width: "100%",
         textAlign: "left",
@@ -1150,11 +1156,11 @@ function ArchiveCard({ story, onOpen }) {
               fontWeight: 900,
               textTransform: "uppercase",
               letterSpacing: "0.14em",
-              color: PALETTE.clay,
+              color: locked ? PALETTE.textSoft : PALETTE.clay,
               marginBottom: "8px",
             }}
           >
-            {story.category}
+            {locked ? "Upcoming" : story.category}
           </div>
 
           <div
@@ -1176,10 +1182,28 @@ function ArchiveCard({ story, onOpen }) {
               fontSize: "16px",
               lineHeight: 1.65,
               color: PALETTE.textSoft,
+              marginBottom: story.heroImage ? "14px" : 0,
             }}
           >
-            {story.subtitle}
+            {locked
+              ? "Not yet time. Focus on today's story first."
+              : story.subtitle}
           </div>
+
+          {story.heroImage && (
+            <img
+              src={story.heroImage}
+              alt={story.title}
+              style={{
+                width: "100%",
+                maxWidth: "340px",
+                height: "180px",
+                objectFit: "cover",
+                borderRadius: "16px",
+                display: "block",
+              }}
+            />
+          )}
         </div>
 
         <div
@@ -1189,15 +1213,15 @@ function ArchiveCard({ story, onOpen }) {
             minWidth: "180px",
           }}
         >
-          <Pill>{story.readingTime}</Pill>
           <Pill>{shortDate(story.date)}</Pill>
+          {!locked && <Pill>{story.readingTime}</Pill>}
         </div>
       </div>
     </button>
   );
 }
 
-function ArchiveView({ stories, todayISO, onOpen, onBack }) {
+function ArchiveView({ stories, todayISO, onOpen, onBack, onGoToday }) {
   const pastStories = stories.filter((story) => story.date < todayISO);
   const todayStory = stories.find((story) => story.date === todayISO);
   const upcomingStories = stories.filter((story) => story.date > todayISO);
@@ -1248,7 +1272,7 @@ function ArchiveView({ stories, todayISO, onOpen, onBack }) {
         >
           Past. Present.
           <br />
-          What’s next.
+          What's next.
         </div>
 
         <div
@@ -1259,8 +1283,8 @@ function ArchiveView({ stories, todayISO, onOpen, onBack }) {
             color: "rgba(255,249,240,0.78)",
           }}
         >
-          Today stays central, but memory deepens when you can revisit, compare, and
-          move through stories with intention.
+          Today's story stays central. Upcoming stories stay visible, but they only
+          fully open on their actual day.
         </div>
       </section>
 
@@ -1288,7 +1312,13 @@ function ArchiveView({ stories, todayISO, onOpen, onBack }) {
             {upcomingStories
               .sort((a, b) => new Date(a.date) - new Date(b.date))
               .map((story) => (
-                <ArchiveCard key={story.id} story={story} onOpen={onOpen} />
+                <ArchiveCard
+                  key={story.id}
+                  story={story}
+                  onOpen={onOpen}
+                  locked
+                  onLockedClick={onGoToday}
+                />
               ))}
           </div>
         </SectionBand>
@@ -1326,6 +1356,15 @@ export default function App() {
     setView("home");
   }
 
+  function goToTodayStory() {
+    if (todayStory) {
+      setSelectedStory(todayStory);
+      setView("story");
+    } else {
+      setView("home");
+    }
+  }
+
   function openImage(imageSrc, imageAlt) {
     setActiveImage({ src: imageSrc, alt: imageAlt });
   }
@@ -1359,6 +1398,7 @@ export default function App() {
           todayISO={todayISO}
           onOpen={openStory}
           onBack={goHome}
+          onGoToday={goToTodayStory}
         />
       )}
 
