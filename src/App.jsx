@@ -664,7 +664,7 @@ function ArchiveCard({ story, onOpen }) {
   );
 }
 
-function VisualCard({ visual }) {
+function VisualCard({ visual, onImageClick }) {
   return (
     <div
       style={{
@@ -676,16 +676,28 @@ function VisualCard({ visual }) {
       }}
     >
       {visual.image && (
-        <img
-          src={visual.image}
-          alt={visual.title}
+        <button
+          onClick={() => onImageClick?.(visual.image, visual.title)}
           style={{
+            padding: 0,
+            border: "none",
+            background: "transparent",
             width: "100%",
-            height: "220px",
-            objectFit: "cover",
+            cursor: "zoom-in",
             display: "block",
           }}
-        />
+        >
+          <img
+            src={visual.image}
+            alt={visual.title}
+            style={{
+              width: "100%",
+              height: "220px",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
+        </button>
       )}
 
       <div style={{ padding: "18px" }}>
@@ -720,7 +732,68 @@ function VisualCard({ visual }) {
     </div>
   );
 }
+function ImageModal({ imageSrc, imageAlt, onClose }) {
+  if (!imageSrc) return null;
 
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        background: "rgba(0,0,0,0.86)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "20px",
+        zIndex: 9999,
+        cursor: "zoom-out",
+      }}
+    >
+      <div
+        style={{
+          position: "relative",
+          maxWidth: "1100px",
+          width: "100%",
+        }}
+      >
+        <button
+          onClick={onClose}
+          style={{
+            position: "absolute",
+            top: "-48px",
+            right: "0",
+            background: "transparent",
+            border: "none",
+            color: "#fff",
+            fontSize: "16px",
+            fontWeight: 900,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            cursor: "pointer",
+          }}
+        >
+          Close
+        </button>
+
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            width: "100%",
+            maxHeight: "85vh",
+            objectFit: "contain",
+            display: "block",
+            borderRadius: "18px",
+            boxShadow: "0 24px 60px rgba(0,0,0,0.35)",
+            cursor: "default",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
 function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
   return (
     <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "22px 18px 80px" }}>
@@ -754,6 +827,8 @@ function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
             textTransform: "uppercase",
             letterSpacing: "-0.05em",
             marginBottom: "16px",
+            textAlign: "center",
+            marginInline: "auto",
           }}
         >
           African memory.
@@ -768,6 +843,8 @@ function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
             lineHeight: 1.7,
             color: "rgba(255,249,240,0.78)",
             marginBottom: "16px",
+            textAlign: "center",
+            marginInline: "auto",
           }}
         >
           One story. One return. One deeper way of seeing the continent, its systems,
@@ -781,7 +858,9 @@ function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
             display: "flex",
             flexWrap: "wrap",
             gap: "10px",
-            marginBottom: "16px",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "20px",
           }}
         >
           <Pill dark>{formatDate(todayISO)}</Pill>
@@ -789,7 +868,14 @@ function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
           {todayStory && <Pill dark>{todayStory.category}</Pill>}
         </div>
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "12px",
+          }}
+        >
           <button
             onClick={() => onOpenStory(todayStory)}
             style={{
@@ -797,11 +883,13 @@ function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
               color: PALETTE.white,
               border: "none",
               borderRadius: "999px",
-              padding: "14px 18px",
+              padding: "18px 30px",
               fontWeight: 900,
-              fontSize: "15px",
+              fontSize: "18px",
               textTransform: "uppercase",
               cursor: "pointer",
+              minWidth: "320px",
+              textAlign: "center",
             }}
           >
             Enter today’s story
@@ -814,11 +902,13 @@ function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
               color: PALETTE.white,
               border: "1px solid rgba(255,255,255,0.16)",
               borderRadius: "999px",
-              padding: "14px 18px",
+              padding: "12px 18px",
               fontWeight: 900,
-              fontSize: "15px",
+              fontSize: "14px",
               textTransform: "uppercase",
               cursor: "pointer",
+              minWidth: "220px",
+              textAlign: "center",
             }}
           >
             Open archive
@@ -826,59 +916,131 @@ function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
         </div>
       </section>
 
-      <StoryPreviewCard story={todayStory} onOpen={onOpenStory} accent />
-
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
           gap: "18px",
-          marginTop: "22px",
         }}
       >
-        <SectionBand title="Today at a glance">
-          <div style={{ display: "grid", gap: "12px" }}>
-            <Pill>{todayStory.region}</Pill>
-            <Pill>{todayStory.period}</Pill>
-            <Pill>{todayStory.readingTime}</Pill>
-          </div>
-        </SectionBand>
-
-        <SectionBand title="Remember this">
-          <div style={{ display: "grid", gap: "12px" }}>
-            {todayStory.takeaways.slice(0, 2).map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  fontSize: "15px",
-                  lineHeight: 1.75,
-                  color: PALETTE.charcoalSoft,
-                }}
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-        </SectionBand>
-
-        <SectionBand title="Reflection">
+        <SectionBand title="Today’s story" dark>
           <div
             style={{
-              fontSize: "18px",
-              lineHeight: 1.8,
-              fontWeight: 700,
-              color: PALETTE.charcoal,
+              maxWidth: "920px",
+              margin: "0 auto",
+              textAlign: "center",
             }}
           >
-            {todayStory.reflection}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                gap: "10px",
+                marginBottom: "16px",
+              }}
+            >
+              <Pill dark>{todayStory.category}</Pill>
+              <Pill dark>{todayStory.readingTime}</Pill>
+            </div>
+
+            <div
+              style={{
+                fontSize: "clamp(34px, 6vw, 72px)",
+                lineHeight: 0.94,
+                fontWeight: 900,
+                textTransform: "uppercase",
+                letterSpacing: "-0.05em",
+                marginBottom: "14px",
+              }}
+            >
+              {todayStory.title}
+            </div>
+
+            <div
+              style={{
+                fontSize: "18px",
+                lineHeight: 1.7,
+                color: "rgba(255,249,240,0.76)",
+                maxWidth: "760px",
+                margin: "0 auto 18px",
+              }}
+            >
+              {todayStory.subtitle}
+            </div>
+
+            {todayStory.heroImage && (
+              <img
+                src={todayStory.heroImage}
+                alt={todayStory.title}
+                style={{
+                  width: "100%",
+                  maxWidth: "820px",
+                  height: "340px",
+                  objectFit: "cover",
+                  borderRadius: "22px",
+                  display: "block",
+                  margin: "0 auto 18px",
+                }}
+              />
+            )}
+
+            <div
+              style={{
+                fontSize: "16px",
+                lineHeight: 1.85,
+                color: PALETTE.white,
+                maxWidth: "760px",
+                margin: "0 auto",
+              }}
+            >
+              {todayStory.openingLine}
+            </div>
           </div>
         </SectionBand>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "18px",
+          }}
+        >
+          <SectionBand title="Remember this">
+            <div style={{ display: "grid", gap: "12px" }}>
+              {todayStory.takeaways.slice(0, 3).map((item, i) => (
+                <div
+                  key={i}
+                  style={{
+                    fontSize: "15px",
+                    lineHeight: 1.75,
+                    color: PALETTE.charcoalSoft,
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </SectionBand>
+
+          <SectionBand title="Reflection" dark>
+            <div
+              style={{
+                fontSize: "20px",
+                lineHeight: 1.8,
+                fontWeight: 800,
+                color: PALETTE.white,
+              }}
+            >
+              {todayStory.reflection}
+            </div>
+          </SectionBand>
+        </div>
       </div>
     </div>
   );
 }
 
-function StoryView({ story, onBack }) {
+function StoryView({ story, onBack, onImageClick }) {
   return (
     <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "22px 18px 80px" }}>
       <button
@@ -973,27 +1135,39 @@ function StoryView({ story, onBack }) {
       </section>
 
       {story.heroImage && (
-        <section
-          style={{
-            marginBottom: "22px",
-            borderRadius: "30px",
-            overflow: "hidden",
-            boxShadow: "0 18px 40px rgba(48, 28, 14, 0.08)",
-          }}
-        >
-          <img
-            src={story.heroImage}
-            alt={story.title}
-            style={{
-              width: "100%",
-              height: "min(520px, 60vw)",
-              minHeight: "280px",
-              objectFit: "cover",
-              display: "block",
-            }}
-          />
-        </section>
-      )}
+  <section
+    style={{
+      marginBottom: "22px",
+      borderRadius: "30px",
+      overflow: "hidden",
+      boxShadow: "0 18px 40px rgba(48, 28, 14, 0.08)",
+    }}
+  >
+    <button
+      onClick={() => onImageClick?.(story.heroImage, story.title)}
+      style={{
+        width: "100%",
+        padding: 0,
+        border: "none",
+        background: "transparent",
+        cursor: "zoom-in",
+        display: "block",
+      }}
+    >
+      <img
+        src={story.heroImage}
+        alt={story.title}
+        style={{
+          width: "100%",
+          height: "min(520px, 60vw)",
+          minHeight: "280px",
+          objectFit: "cover",
+          display: "block",
+        }}
+      />
+    </button>
+  </section>
+)}
 
       <SectionBand title="Opening line" dark>
         <div
@@ -1062,7 +1236,11 @@ function StoryView({ story, onBack }) {
             }}
           >
             {story.visuals.map((visual, i) => (
-              <VisualCard key={i} visual={visual} />
+              <VisualCard 
+              key={i} 
+              visual={visual} 
+              onImageClick={onImageClick}
+              />
             ))}
           </div>
         </SectionBand>
@@ -1247,6 +1425,7 @@ export default function App() {
   const [todayISO, setTodayISO] = useState(getTodayISO());
   const [view, setView] = useState("home");
   const [selectedStory, setSelectedStory] = useState(null);
+  const [activeImage, setActiveImage] = useState(null);
 
   useEffect(() => {
     setTodayISO(getTodayISO());
@@ -1267,6 +1446,13 @@ export default function App() {
   function goHome() {
     setSelectedStory(null);
     setView("home");
+    function openImage(imageSrc, imageAlt) {
+  setActiveImage({ src: imageSrc, alt: imageAlt });
+}
+
+function closeImage() {
+  setActiveImage(null);
+}
   }
 
   return (
@@ -1300,8 +1486,17 @@ export default function App() {
       )}
 
       {view === "story" && selectedStory && (
-        <StoryView story={selectedStory} onBack={goHome} />
-      )}
+  <StoryView
+    story={selectedStory}
+    onBack={goHome}
+    onImageClick={openImage}
+  />
+)}
+<ImageModal
+  imageSrc={activeImage?.src}
+  imageAlt={activeImage?.alt}
+  onClose={closeImage}
+/>
     </div>
   );
 }
