@@ -795,12 +795,19 @@ function ImageModal({ imageSrc, imageAlt, onClose }) {
   );
 }
 function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
+  if (!todayStory) {
+  return (
+    <div style={{ padding: "40px", color: "#fff" }}>
+      No story available for today.
+    </div>
+  );
+}
   return (
     <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "22px 18px 80px" }}>
       <section
         style={{
           background: `
-            linear-gradient(135deg, rgba(22,19,17,0.98), rgba(36,29,25,0.96)),
+            linear-gradient(135deg,rgba(22,19,17,0.98), rgba(36,29,25,0.96)),
             repeating-linear-gradient(
               135deg,
               rgba(255,255,255,0.02) 0px,
@@ -1492,11 +1499,6 @@ function closeImage() {
     onImageClick={openImage}
   />
 )}
-<ImageModal
-  imageSrc={activeImage?.src}
-  imageAlt={activeImage?.alt}
-  onClose={closeImage}
-/>
     </div>
   );
 }
