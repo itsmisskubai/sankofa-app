@@ -24,6 +24,7 @@ const STORIES = [
     title: "Why the Spider Owns the Stories",
     subtitle: "The Akan tale of how Anansi outsmarted the Sky God — and what that spider still carries",
     readingTime: "5 min",
+    heroImage: "/images/anansi/anansi-hero.png",
     openingLine: "Every story in the world once belonged to someone else. This is how Anansi stole them all.",
     context: "The Akan people of present-day Ghana and Côte d'Ivoire are among the richest storytelling cultures on the continent. At the center of their world is Anansi — a spider who is small, patient, and endlessly clever. During the slave trade, Anansi stories crossed the Atlantic, taking root in the Caribbean and the American South as the trickster tradition. But the original stories were always about the same thing: how wit defeats power.",
     story: [
@@ -47,10 +48,25 @@ const STORIES = [
     ],
     reflection: "Think of a time you had less power than someone else in a situation. What did you reach for instead of force — and did it work?",
     visuals: [
-      { icon: "🗺️", title: "The Akan Homeland", desc: "Present-day Ghana and Côte d'Ivoire — the birthplace of the Anansi tradition, a culture whose storytelling shaped diaspora communities across three continents." },
-      { icon: "🕷️", title: "The Spider as Symbol", desc: "In Akan tradition, the spider is a weaver — of webs and of worlds. Its form is deliberate: patient, architectural, invisible until the trap is complete." },
-      { icon: "🧵", title: "Kente Cloth", desc: "Akan weavers encode proverbs and histories into cloth patterns — another tradition of carrying deep meaning in plain sight, in a form anyone can see but only some can read." }
-    ]
+  {
+    icon: "🗺️",
+    title: "The Akan Homeland",
+    desc: "Present-day Ghana and Côte d'Ivoire — the birthplace of the Anansi tradition, a culture whose storytelling shaped diaspora communities across three continents.",
+    image: "/images/anansi/akan-map.png"
+  },
+  {
+    icon: "🕷️",
+    title: "The Spider as Symbol",
+    desc: "In Akan tradition, the spider is a weaver — of webs and of worlds. Its form is deliberate: patient, architectural, invisible until the trap is complete.",
+    image: "/images/anansi/anansi-hero.png"
+  },
+  {
+    icon: "🧵",
+    title: "Kente Cloth",
+    desc: "Akan weavers encode proverbs and histories into cloth patterns — another tradition of carrying deep meaning in plain sight, in a form anyone can see but only some can read.",
+    image: "/images/anansi/kente-cloth.jpg"
+  }
+]
   },
   {
     id: 2,
@@ -61,6 +77,7 @@ const STORIES = [
     title: "The Coast That Traded With the World",
     subtitle: "How East African city-states built a civilization at the meeting point of Africa, Arabia, and Asia",
     readingTime: "6 min",
+    heroImage: "/images/swahili/kilwa-hero.jpg",
     openingLine: "Before Europe \"discovered\" the sea routes to Asia, East African merchants had been running them for five hundred years.",
     context: "The Swahili Coast stretches roughly 1,800 miles along the eastern edge of Africa — from present-day Somalia through Kenya, Tanzania, and Mozambique. Between the 9th and 16th centuries, a string of city-states rose along this shore: Mombasa, Malindi, Kilwa, Sofala, Zanzibar. These were not fishing villages. They were sophisticated trading cities with stone architecture, complex governance, and economic connections that ran from the Chinese coast to the interior of Africa.",
     story: [
@@ -79,10 +96,25 @@ const STORIES = [
     ],
     reflection: "What does it mean for a culture to be \"open to the world\"? And what is the difference between trade as exchange and trade as conquest?",
     visuals: [
-      { icon: "🗺️", title: "The Swahili Coast", desc: "1,800 miles from Somalia to Mozambique — each port city a node in the Indian Ocean network, shaped by the monsoon winds that made regular, predictable trade voyages possible." },
-      { icon: "⛵", title: "The Monsoon System", desc: "The seasonal wind reversal that powered Indian Ocean trade — a natural infrastructure understood and exploited by Swahili merchants for centuries before any European ship appeared in these waters." },
-      { icon: "🏛️", title: "Kilwa Kisiwani", desc: "The great stone ruins of Kilwa, Tanzania — a UNESCO World Heritage site, the city Ibn Battuta called one of the world's most beautiful, now slowly reclaimed by ocean and jungle." }
-    ]
+  {
+    icon: "🗺️",
+    title: "The Swahili Coast",
+    desc: "1,800 miles from Somalia to Mozambique — each port city a node in the Indian Ocean network, shaped by the monsoon winds that made regular, predictable trade voyages possible.",
+    image: "/images/swahili/swahili-map.png"
+  },
+  {
+    icon: "⛵",
+    title: "The Monsoon System",
+    desc: "The seasonal wind reversal that powered Indian Ocean trade — a natural infrastructure understood and exploited by Swahili merchants for centuries before any European ship appeared in these waters.",
+    image: "/images/swahili/monsoon-map.jpg"
+  },
+  {
+    icon: "🏛️",
+    title: "Kilwa Kisiwani",
+    desc: "The great stone ruins of Kilwa, Tanzania — a UNESCO World Heritage site, the city Ibn Battuta called one of the world's most beautiful, now slowly reclaimed by ocean and jungle.",
+    image: "/images/swahili/kilwa-hero.jpg"
+  }
+]
   },
   {
     id: 3,
@@ -93,6 +125,7 @@ const STORIES = [
     title: "The City They Said Africans Didn't Build",
     subtitle: "How Great Zimbabwe was erased, misattributed, and finally reclaimed",
     readingTime: "6 min",
+    heroImage: "/images/zimbabwe/great-zimbabwe-hero.jpg",
     openingLine: "When European explorers arrived at the ruins, they looked at the walls and asked everyone except the people who lived there who had built them.",
     context: "Great Zimbabwe is a complex of stone enclosures in present-day Zimbabwe — built without mortar, with granite blocks fitted so precisely that sections of the wall have stood for nearly a thousand years. At its height it was the capital of a powerful trading empire, home to perhaps 18,000 people. The word \"Zimbabwe\" itself comes from the Shona dzimba dza mabwe — houses of stone. The modern country took its name from this place.",
     story: [
@@ -112,10 +145,25 @@ const STORIES = [
     ],
     reflection: "When a history is erased or deliberately distorted, what is actually being protected — and by whom? And who benefits when the correction is finally made?",
     visuals: [
-      { icon: "🏗️", title: "The Great Enclosure", desc: "250 meters in circumference, walls up to 11 meters high — built without mortar, using precisely cut granite blocks. Still standing after nine hundred years." },
-      { icon: "🗺️", title: "Southern Africa", desc: "The ruins sit in the Masvingo province of present-day Zimbabwe, in a valley between granite-rich hills — the very landscape that provided its building material." },
-      { icon: "⚱️", title: "The Trade Record", desc: "Chinese porcelain, Arabian glass, Persian beads, and gold artifacts found inside Great Zimbabwe — a physical inventory of a civilization connected to the Indian Ocean world." }
-    ]
+  {
+    icon: "🏗️",
+    title: "The Great Enclosure",
+    desc: "250 meters in circumference, walls up to 11 meters high — built without mortar, using precisely cut granite blocks. Still standing after nine hundred years.",
+    image: "/images/zimbabwe/great-zimbabwe-hero.jpg"
+  },
+  {
+    icon: "🗺️",
+    title: "Southern Africa",
+    desc: "The ruins sit in the Masvingo province of present-day Zimbabwe, in a valley between granite-rich hills — the very landscape that provided its building material.",
+    image: "/images/zimbabwe/great-zimbabwe-aerial-2.jpg"
+  },
+  {
+    icon: "⚱️",
+    title: "The Trade Record",
+    desc: "Chinese porcelain, Arabian glass, Persian beads, and gold artifacts found inside Great Zimbabwe — a physical inventory of a civilization connected to the Indian Ocean world.",
+    image: "/images/zimbabwe/zimbabwe-bird.svg"
+  }
+]
   },
   {
     id: 4,
@@ -126,6 +174,7 @@ const STORIES = [
     title: "The Queen Who Refused to Sit on the Floor",
     subtitle: "How Nzinga of Ndongo turned every encounter with Portugal into a statement of sovereignty",
     readingTime: "6 min",
+    heroImage: "/images/nzinga/nzinga-hero.png",
     openingLine: "When the Portuguese governor refused to offer her a chair, she had one of her attendants kneel on all fours and sat on his back instead.",
     context: "The Kingdom of Ndongo occupied much of present-day Angola. By the early 17th century, the Portuguese had spent decades pressing against its borders — using military force, trade manipulation, and the slave trade to erode sovereignty. When Nzinga Mbande came to power around 1624, she inherited a kingdom under siege. She spent four decades refusing to surrender it.",
     story: [
@@ -146,10 +195,25 @@ const STORIES = [
     ],
     reflection: "Nzinga used the enemy's language, religion, and alliances as weapons. What does it mean to operate fully within a system while resisting it — and where does strategy end and compromise begin?",
     visuals: [
-      { icon: "🗺️", title: "The Kingdom of Ndongo", desc: "Present-day Angola — the territory Nzinga defended across four decades, and which she expanded through the capture of the Kingdom of Matamba after losing Ndongo's capital." },
-      { icon: "👑", title: "Nzinga's Statue, Luanda", desc: "A monumental statue of Queen Nzinga stands today in central Luanda — erected after Angolan independence as a national symbol of resistance and self-determination." },
-      { icon: "⚔️", title: "The Dutch Alliance", desc: "Nzinga's partnership with the VOC (Dutch East India Company) against Portugal — a geopolitical maneuver that exploited European rivalry for African strategic benefit." }
-    ]
+  {
+    icon: "🗺️",
+    title: "The Kingdom of Ndongo",
+    desc: "Present-day Angola — the territory Nzinga defended across four decades, and which she expanded through the capture of the Kingdom of Matamba after losing Ndongo's capital.",
+    image: "/images/nzinga/ndongo-map.svg"
+  },
+  {
+    icon: "👑",
+    title: "Nzinga's Statue, Luanda",
+    desc: "A monumental statue of Queen Nzinga stands today in central Luanda — erected after Angolan independence as a national symbol of resistance and self-determination.",
+    image: "/images/nzinga/nzinga-statue.jpg"
+  },
+  {
+    icon: "⚔️",
+    title: "The Dutch Alliance",
+    desc: "Nzinga's partnership with the VOC (Dutch East India Company) against Portugal — a geopolitical maneuver that exploited European rivalry for African strategic benefit.",
+    image: "/images/nzinga/nzinga-hero.png"
+  }
+]
   },
   {
     id: 5,
@@ -160,6 +224,7 @@ const STORIES = [
     title: "The Memory of a People",
     subtitle: "What the griots carried across generations — and why it was more powerful than any written archive",
     readingTime: "5 min",
+    heroImage: "/images/griot/kora-hero.jpg",
     openingLine: "In West Africa, they say: when an elder dies, a library burns. The griot's job was to make sure libraries didn't burn.",
     context: "The griot — called jeli in Manding languages — is a hereditary oral historian, musician, genealogist, and diplomat found across West Africa: in the Mali Empire, in Senegal, Gambia, Guinea-Bissau, Guinea, and beyond. The tradition is at least a thousand years old and was structurally embedded in the most important institutions of West African governance. Griots were not entertainers. They were the living memory of civilizations.",
     story: [
@@ -178,10 +243,25 @@ const STORIES = [
     ],
     reflection: "In an age of search engines and digital archives, what are we losing by no longer needing to hold knowledge inside our bodies, our voices, and our relationships?",
     visuals: [
-      { icon: "🎵", title: "The Kora", desc: "A 21-string bridge harp unique to West Africa — the primary instrument of the griot tradition, capable of extraordinary harmonic complexity and the primary vehicle for encoded historical knowledge." },
-      { icon: "📜", title: "The Living Archive", desc: "A trained griot holds genealogies stretching back 15+ generations, the terms of long-ago treaties, battle histories, and ceremonial songs — an oral library built and maintained through daily practice across a lifetime." },
-      { icon: "🗺️", title: "The Griot Belt", desc: "The tradition spans Senegal, Gambia, Mali, Guinea, Burkina Faso — mapping almost exactly onto the old footprint of the Mali and Songhai Empires, the civilizations that first institutionalized the role." }
-    ]
+  {
+    icon: "🎵",
+    title: "The Kora",
+    desc: "A 21-string bridge harp unique to West Africa — the primary instrument of the griot tradition, capable of extraordinary harmonic complexity and the primary vehicle for encoded historical knowledge.",
+    image: "/images/griot/kora-hero.jpg"
+  },
+  {
+    icon: "📜",
+    title: "The Living Archive",
+    desc: "A trained griot holds genealogies stretching back 15+ generations, the terms of long-ago treaties, battle histories, and ceremonial songs — an oral library built and maintained through daily practice across a lifetime.",
+    image: "/images/griot/timbuktu-manuscript.jpg"
+  },
+  {
+    icon: "🗺️",
+    title: "The Griot Belt",
+    desc: "The tradition spans Senegal, Gambia, Mali, Guinea, Burkina Faso — mapping almost exactly onto the old footprint of the Mali and Songhai Empires, the civilizations that first institutionalized the role.",
+    image: "/images/griot/mali-empire-map.png"
+  }
+]
   },
   {
     id: 6,
@@ -192,6 +272,7 @@ const STORIES = [
     title: "The Star the Textbooks Missed",
     subtitle: "The Dogon people described Sirius B in precise detail — centuries before telescopes could find it",
     readingTime: "6 min",
+    heroImage: "/images/dogon/sirius-hero.jpg",
     openingLine: "In 1931, French anthropologists asked Dogon elders about their cosmology. The elders began describing a star that no instrument on earth could yet confirm.",
     context: "The Dogon people live on and around the Bandiagara Escarpment in present-day Mali — a dramatic landscape of cliffs and plateau where they have maintained a complex civilization for at least a thousand years. Their theology, cosmology, and ritual practice are among the most thoroughly documented in any African culture. When the anthropologists Marcel Griaule and Germaine Dieterlen spent years in conversation with Dogon knowledge-keepers, they found something that has unsettled and fascinated scholars ever since.",
     story: [
@@ -210,10 +291,25 @@ const STORIES = [
     ],
     reflection: "What knowledge systems do we dismiss because they don't look like what we've been taught knowledge should look like — and what might we be missing as a result?",
     visuals: [
-      { icon: "⭐", title: "Sirius and Sirius B", desc: "Sirius is the brightest star in the night sky. Its companion Sirius B — a white dwarf — is invisible to the naked eye and requires a powerful telescope. The Dogon described both, and the orbital relationship between them." },
-      { icon: "🏔️", title: "The Bandiagara Escarpment", desc: "The dramatic cliff landscape of Mali where the Dogon have lived for over a thousand years — their villages built into the cliff face, their cosmology mapped onto the landscape itself." },
-      { icon: "🔭", title: "The Sigui Ceremony", desc: "Held once every 60 years, the Sigui is one of the Dogon's most important rituals — a ceremony of renewal, memory, and transmission connected directly to their astronomical calendar and the Sirius system." }
-    ]
+  {
+    icon: "⭐",
+    title: "Sirius and Sirius B",
+    desc: "Sirius is the brightest star in the night sky. Its companion Sirius B — a white dwarf — is invisible to the naked eye and requires a powerful telescope. The Dogon described both, and the orbital relationship between them.",
+    image: "/images/dogon/sirius-hero.jpg"
+  },
+  {
+    icon: "🏔️",
+    title: "The Bandiagara Escarpment",
+    desc: "The dramatic cliff landscape of Mali where the Dogon have lived for over a thousand years — their villages built into the cliff face, their cosmology mapped onto the landscape itself.",
+    image: "/images/dogon/bandiagara.jpg"
+  },
+  {
+    icon: "🔭",
+    title: "The Sigui Ceremony",
+    desc: "Held once every 60 years, the Sigui is one of the Dogon's most important rituals — a ceremony of renewal, memory, and transmission connected directly to their astronomical calendar and the Sirius system.",
+    image: "/images/dogon/dogon-dance.jpg"
+  }
+]
   },
   {
     id: 7,
@@ -243,10 +339,25 @@ const STORIES = [
     ],
     reflection: "When you think about the places and peoples you've been taught to associate with wealth, power, and civilization — what were you never shown? And who made that decision?",
     visuals: [
-      { icon: "🕌", title: "Djinguereber Mosque, Timbuktu", desc: "Built in 1327 CE by Abu Ishaq al-Sahili — the architect Mansa Musa brought back from his pilgrimage. Still standing. Still in use. A building that is almost seven hundred years old." },
-      { icon: "🗺️", title: "The Catalan Atlas, 1375", desc: "The medieval map that placed Mansa Musa at Africa's center — gold in his hand, crown on his head — forcing European cartography to acknowledge what existed south of the Sahara." },
-      { icon: "📚", title: "Timbuktu's Manuscripts", desc: "An estimated 400,000–700,000 manuscripts — on mathematics, astronomy, medicine, theology, law — preserved in Timbuktu. Many were hidden from French colonial forces by local families. Many survive." }
-    ]
+  {
+    icon: "🕌",
+    title: "Djinguereber Mosque, Timbuktu",
+    desc: "Built in 1327 CE by Abu Ishaq al-Sahili — the architect Mansa Musa brought back from his pilgrimage. Still standing. Still in use. A building that is almost seven hundred years old.",
+    image: "/images/mansa/djinguereber.jpg"
+  },
+  {
+    icon: "🗺️",
+    title: "The Catalan Atlas, 1375",
+    desc: "The medieval map that placed Mansa Musa at Africa's center — gold in his hand, crown on his head — forcing European cartography to acknowledge what existed south of the Sahara.",
+    image: "/images/mansa/mansa-hero.jpg"
+  },
+  {
+    icon: "📚",
+    title: "Timbuktu's Manuscripts",
+    desc: "An estimated 400,000–700,000 manuscripts — on mathematics, astronomy, medicine, theology, law — preserved in Timbuktu.",
+    image: "/images/mansa/timbuktu-manuscripts.jpg"
+  }
+]
   }
 ];
 
@@ -329,6 +440,20 @@ function HomeView({ story, onEnter, onArchive }) {
             <p style={{ fontSize: "14px", color: "#7A6555", margin: "0 0 20px", lineHeight: "1.5", fontStyle: "italic" }}>
               {story.subtitle}
             </p>
+            {story.heroImage && (
+  <img
+    src={story.heroImage}
+    alt={story.title}
+    style={{
+      width: "100%",
+      maxHeight: "420px",
+      objectFit: "cover",
+      borderRadius: "24px",
+      margin: "24px 0 32px 0",
+      display: "block"
+    }}
+  />
+)}
             <p style={{ fontSize: "15px", color: "#4A3020", margin: "0 0 22px", lineHeight: "1.65", borderLeft: "3px solid #C4871F", paddingLeft: "14px" }}>
               {story.openingLine}
             </p>
@@ -392,7 +517,20 @@ function StoryView({ story, onBack }) {
 
       {/* Body */}
       <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 20px 80px" }}>
-
+{story.heroImage && (
+  <img
+    src={story.heroImage}
+    alt={story.title}
+    style={{
+      width: "100%",
+      maxHeight: "420px",
+      objectFit: "cover",
+      borderRadius: "24px",
+      margin: "24px 0 32px 0",
+      display: "block"
+    }}
+  />
+)}
         {/* Opening pull quote */}
         <div style={{ margin: "36px 0 32px", padding: "20px 22px", background: "#FFFCF5", borderRadius: "12px", borderLeft: "4px solid #C4871F", boxShadow: "0 2px 12px rgba(60,30,0,0.06)" }}>
           <p style={{ fontSize: "18px", lineHeight: "1.6", color: "#2A1400", margin: 0, fontStyle: "italic", fontWeight: "500" }}>
@@ -436,15 +574,42 @@ function StoryView({ story, onBack }) {
         <div style={{ margin: "36px 0" }}>
           <div style={{ fontSize: "11px", color: "#B8A898", fontFamily: "system-ui, sans-serif", letterSpacing: "0.14em", marginBottom: "16px" }}>VISUALIZE IT</div>
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-            {story.visuals.map((v, i) => (
-              <div key={i} style={{ background: "#FFFCF5", borderRadius: "12px", padding: "16px 18px", border: "1px solid #EAD9C4", display: "flex", gap: "14px", alignItems: "flex-start" }}>
-                <span style={{ fontSize: "26px", lineHeight: 1, flexShrink: 0, marginTop: "2px" }}>{v.icon}</span>
-                <div>
-                  <div style={{ fontSize: "14px", fontWeight: "700", color: "#1A0D02", fontFamily: "system-ui, sans-serif", marginBottom: "5px" }}>{v.title}</div>
-                  <div style={{ fontSize: "13px", color: "#7A6555", lineHeight: "1.6" }}>{v.desc}</div>
-                </div>
-              </div>
-            ))}
+            {story.visuals.map((visual, index) => (
+  <div
+    key={index}
+    style={{
+      background: "#fffaf3",
+      borderRadius: "20px",
+      padding: "16px",
+      boxShadow: "0 8px 24px rgba(0,0,0,0.06)",
+      marginBottom: "20px"
+    }}
+  >
+    {visual.image && (
+      <img
+        src={visual.image}
+        alt={visual.title}
+        style={{
+          width: "100%",
+          height: "220px",
+          objectFit: "cover",
+          borderRadius: "16px",
+          marginBottom: "14px",
+          display: "block"
+        }}
+      />
+    )}
+
+    <div style={{ fontSize: "1.05rem", fontWeight: 700, marginBottom: "8px" }}>
+      {visual.title}
+    </div>
+
+    <div style={{ fontSize: "0.98rem", lineHeight: 1.6, color: "#473c2f" }}>
+      {visual.desc}
+    </div>
+  </div>
+))}
+
           </div>
         </div>
 
