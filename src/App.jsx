@@ -359,383 +359,949 @@ const STORIES = [
 ]
   }
 ];
+const PALETTE = {
+  cream: "#F3EBDD",
+  sand: "#D8C2A6",
+  clay: "#A55F2A",
+  burnt: "#D96A1B",
+  gold: "#D8A928",
+  charcoal: "#161311",
+  charcoalSoft: "#241D19",
+  brown: "#4E2D1A",
+  line: "rgba(40, 27, 17, 0.12)",
+  white: "#FFF9F0",
+};
 
-// ─── UTILITIES ────────────────────────────────────────────────────────────────
-function formatDate(dateStr) {
-  const d = new Date(dateStr + "T12:00:00");
-  return d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+function getTodayISO() {
+  return new Date().toLocaleDateString("en-CA");
 }
-function shortDate(dateStr) {
-  const d = new Date(dateStr + "T12:00:00");
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+
+function formatDate(dateString) {
+  const d = new Date(dateString);
+  return d.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
-// ─── HOME VIEW ────────────────────────────────────────────────────────────────
-function HomeView({ story, onEnter, onArchive }) {
-  const cat = CAT[story.category];
-
+function Label({ children, light = false }) {
   return (
-    <div style={{ background: "#F5EDE0", minHeight: "100vh", fontFamily: "'Georgia', 'Times New Roman', serif" }}>
-      {/* Top bar */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 24px 16px", borderBottom: "1px solid #E0CEB8" }}>
-        <div>
-          <div style={{ fontSize: "20px", fontWeight: "700", color: "#1A0D02", letterSpacing: "0.08em", fontFamily: "system-ui, sans-serif" }}>SANKOFA</div>
-          <div style={{ fontSize: "11px", color: "#9A8070", letterSpacing: "0.12em", fontFamily: "system-ui, sans-serif", marginTop: "2px" }}>A DAILY AFRICAN STORY</div>
-        </div>
-        <button
-          onClick={onArchive}
-          style={{ background: "none", border: "1px solid #C8B89A", color: "#7A6555", padding: "7px 16px", borderRadius: "20px", fontSize: "13px", cursor: "pointer", fontFamily: "system-ui, sans-serif", letterSpacing: "0.05em" }}>
-          Archive
-        </button>
-      </div>
-
-      {/* Main content */}
-      <div style={{ maxWidth: "480px", margin: "0 auto", padding: "32px 20px 60px" }}>
-        {/* Date */}
-        <div style={{ fontSize: "13px", color: "#9A8070", fontFamily: "system-ui, sans-serif", letterSpacing: "0.08em", marginBottom: "8px", textAlign: "center" }}>
-          {formatDate(TODAY).toUpperCase()}
-        </div>
-        <div style={{ textAlign: "center", fontSize: "13px", color: "#B8521E", fontFamily: "system-ui, sans-serif", letterSpacing: "0.15em", fontWeight: "600", marginBottom: "32px" }}>
-          TODAY'S STORY
-        </div>
-
-        {/* Story card */}
-        <div
-          onClick={onEnter}
-          style={{ background: "#FFFCF5", borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 24px rgba(60,30,0,0.10)", cursor: "pointer", border: "1px solid #EAD9C4" }}>
-
-          {/* Hero gradient */}
-          <div style={{
-            background: `linear-gradient(145deg, ${cat.heroA} 0%, ${cat.heroB} 100%)`,
-            height: "200px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            padding: "20px",
-            position: "relative"
-          }}>
-            {/* Subtle pattern overlay */}
-            <div style={{ position: "absolute", inset: 0, opacity: 0.06, backgroundImage: "radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
-            <div style={{ position: "relative" }}>
-              <div style={{ display: "flex", gap: "8px", marginBottom: "10px", alignItems: "center" }}>
-                <span style={{ background: "rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.95)", padding: "3px 10px", borderRadius: "12px", fontSize: "11px", fontFamily: "system-ui, sans-serif", letterSpacing: "0.1em" }}>
-                  {story.category.toUpperCase()}
-                </span>
-                <span style={{ color: "rgba(255,255,255,0.65)", fontSize: "11px", fontFamily: "system-ui, sans-serif" }}>
-                  · {story.readingTime} read
-                </span>
-              </div>
-              <div style={{ color: "rgba(255,255,255,0.7)", fontSize: "12px", fontFamily: "system-ui, sans-serif", letterSpacing: "0.06em" }}>
-                {story.region} · {story.period}
-              </div>
-            </div>
-          </div>
-
-          {/* Text content */}
-          <div style={{ padding: "24px 22px 22px" }}>
-            <h2 style={{ fontSize: "24px", lineHeight: "1.25", color: "#1A0D02", margin: "0 0 8px", fontWeight: "700" }}>
-              {story.title}
-            </h2>
-            <p style={{ fontSize: "14px", color: "#7A6555", margin: "0 0 20px", lineHeight: "1.5", fontStyle: "italic" }}>
-              {story.subtitle}
-            </p>
-            {story.heroImage && (
-  <img
-    src={story.heroImage}
-    alt={story.title}
-    style={{
-      width: "100%",
-      maxHeight: "420px",
-      objectFit: "cover",
-      borderRadius: "24px",
-      margin: "24px 0 32px 0",
-      display: "block"
-    }}
-  />
-)}
-            <p style={{ fontSize: "15px", color: "#4A3020", margin: "0 0 22px", lineHeight: "1.65", borderLeft: "3px solid #C4871F", paddingLeft: "14px" }}>
-              {story.openingLine}
-            </p>
-            <button
-              style={{ width: "100%", background: `linear-gradient(135deg, ${cat.heroA}, ${cat.heroB})`, color: "white", border: "none", padding: "14px", borderRadius: "10px", fontSize: "15px", fontFamily: "system-ui, sans-serif", fontWeight: "600", cursor: "pointer", letterSpacing: "0.04em" }}>
-              Enter Today's Story →
-            </button>
-          </div>
-        </div>
-
-        {/* Footer nudge */}
-        <p style={{ textAlign: "center", fontSize: "13px", color: "#B8A898", marginTop: "28px", fontFamily: "system-ui, sans-serif", lineHeight: "1.6" }}>
-          Five to seven minutes.<br />One story. Every day.
-        </p>
-      </div>
+    <div
+      style={{
+        fontSize: "12px",
+        fontWeight: 900,
+        letterSpacing: "0.18em",
+        textTransform: "uppercase",
+        color: light ? "rgba(255,249,240,0.72)" : PALETTE.clay,
+        marginBottom: "10px",
+      }}
+    >
+      {children}
     </div>
   );
 }
 
-// ─── STORY VIEW ───────────────────────────────────────────────────────────────
-function StoryView({ story, onBack }) {
-  const cat = CAT[story.category];
-
-  useEffect(() => { window.scrollTo(0, 0); }, [story]);
-
+function Pill({ children, dark = false }) {
   return (
-    <div style={{ background: "#F5EDE0", minHeight: "100vh", fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        padding: "10px 14px",
+        borderRadius: "999px",
+        background: dark ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.55)",
+        border: dark
+          ? "1px solid rgba(255,255,255,0.10)"
+          : `1px solid ${PALETTE.line}`,
+        color: dark ? PALETTE.white : PALETTE.charcoalSoft,
+        fontSize: "14px",
+        fontWeight: 800,
+      }}
+    >
+      {children}
+    </span>
+  );
+}
 
-      {/* Back button */}
-      <div style={{ padding: "16px 20px", borderBottom: "1px solid #E0CEB8", background: "#F5EDE0", position: "sticky", top: 0, zIndex: 10, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <button onClick={onBack} style={{ background: "none", border: "none", color: "#7A6555", fontSize: "14px", cursor: "pointer", fontFamily: "system-ui, sans-serif", display: "flex", alignItems: "center", gap: "6px" }}>
-          ← Back
-        </button>
-        <div style={{ fontSize: "11px", color: "#B8A898", fontFamily: "system-ui, sans-serif", letterSpacing: "0.1em" }}>SANKOFA</div>
-      </div>
+function SectionBand({ title, children, dark = false }) {
+  return (
+    <section
+      style={{
+        background: dark ? PALETTE.charcoal : PALETTE.white,
+        color: dark ? PALETTE.white : PALETTE.charcoal,
+        borderRadius: "28px",
+        padding: "28px",
+        border: dark ? "none" : `1px solid ${PALETTE.line}`,
+        boxShadow: dark
+          ? "0 18px 40px rgba(0,0,0,0.18)"
+          : "0 18px 40px rgba(48, 28, 14, 0.06)",
+        marginBottom: "22px",
+      }}
+    >
+      <Label light={dark}>{title}</Label>
+      {children}
+    </section>
+  );
+}
 
-      {/* Hero */}
-      <div style={{ background: `linear-gradient(155deg, ${cat.heroA} 0%, ${cat.heroB} 100%)`, padding: "40px 24px 36px", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, opacity: 0.06, backgroundImage: "radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 75% 80%, white 1px, transparent 1px), radial-gradient(circle at 50% 20%, white 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
-        <div style={{ maxWidth: "680px", margin: "0 auto", position: "relative" }}>
-          <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "16px", flexWrap: "wrap" }}>
-            <span style={{ background: "rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.95)", padding: "4px 12px", borderRadius: "14px", fontSize: "11px", fontFamily: "system-ui, sans-serif", letterSpacing: "0.12em", fontWeight: "600" }}>
-              {story.category.toUpperCase()}
-            </span>
-            <span style={{ color: "rgba(255,255,255,0.65)", fontSize: "12px", fontFamily: "system-ui, sans-serif" }}>
-              {story.readingTime} read
-            </span>
-          </div>
-          <h1 style={{ fontSize: "clamp(26px, 5vw, 38px)", lineHeight: "1.15", color: "white", margin: "0 0 12px", fontWeight: "700" }}>
-            {story.title}
-          </h1>
-          <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.78)", margin: "0 0 20px", lineHeight: "1.5", fontStyle: "italic" }}>
-            {story.subtitle}
-          </p>
-          <div style={{ display: "flex", gap: "16px", fontSize: "12px", color: "rgba(255,255,255,0.6)", fontFamily: "system-ui, sans-serif", letterSpacing: "0.05em" }}>
-            <span>📍 {story.region}</span>
-            <span>📅 {story.period}</span>
-          </div>
-        </div>
-      </div>
+function PatternStrip({ dark = false }) {
+  return (
+    <div
+      style={{
+        height: "18px",
+        borderRadius: "999px",
+        margin: "12px 0 18px",
+        background: dark
+          ? `
+            repeating-linear-gradient(
+              90deg,
+              #D96A1B 0px,
+              #D96A1B 26px,
+              #D8A928 26px,
+              #D8A928 52px,
+              #A55F2A 52px,
+              #A55F2A 78px,
+              #241D19 78px,
+              #241D19 104px
+            )
+          `
+          : `
+            repeating-linear-gradient(
+              90deg,
+              rgba(217,106,27,0.95) 0px,
+              rgba(217,106,27,0.95) 26px,
+              rgba(216,169,40,0.95) 26px,
+              rgba(216,169,40,0.95) 52px,
+              rgba(165,95,42,0.95) 52px,
+              rgba(165,95,42,0.95) 78px,
+              rgba(36,29,25,0.9) 78px,
+              rgba(36,29,25,0.9) 104px
+            )
+          `,
+      }}
+    />
+  );
+}
 
-      {/* Body */}
-      <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 20px 80px" }}>
-{story.heroImage && (
-  <img
-    src={story.heroImage}
-    alt={story.title}
-    style={{
-      width: "100%",
-      maxHeight: "420px",
-      objectFit: "cover",
-      borderRadius: "24px",
-      margin: "24px 0 32px 0",
-      display: "block"
-    }}
-  />
-)}
-        {/* Opening pull quote */}
-        <div style={{ margin: "36px 0 32px", padding: "20px 22px", background: "#FFFCF5", borderRadius: "12px", borderLeft: "4px solid #C4871F", boxShadow: "0 2px 12px rgba(60,30,0,0.06)" }}>
-          <p style={{ fontSize: "18px", lineHeight: "1.6", color: "#2A1400", margin: 0, fontStyle: "italic", fontWeight: "500" }}>
-            "{story.openingLine}"
-          </p>
-        </div>
-
-        {/* Context */}
-        <SectionBlock label="CONTEXT" labelColor={cat.badge}>
-          <p style={{ fontSize: "16px", lineHeight: "1.8", color: "#3A2010", margin: 0 }}>
-            {story.context}
-          </p>
-        </SectionBlock>
-
-        {/* The Story */}
-        <SectionBlock label="THE STORY" labelColor={cat.badge}>
-          {story.story.map((para, i) => (
-            <p key={i} style={{ fontSize: "16px", lineHeight: "1.85", color: "#2A1400", margin: "0 0 18px", whiteSpace: "pre-line" }}>
-              {para}
-            </p>
-          ))}
-        </SectionBlock>
-
-        {/* What Was Really Going On */}
-        <SectionBlock label="WHAT WAS REALLY GOING ON" labelColor={cat.badge} accent>
-          {story.deeper.split("\n\n").map((para, i) => (
-            <p key={i} style={{ fontSize: "16px", lineHeight: "1.85", color: "#2A1400", margin: "0 0 16px" }}>
-              {para}
-            </p>
-          ))}
-        </SectionBlock>
-
-        {/* Why It Matters */}
-        <SectionBlock label="WHY IT MATTERS" labelColor={cat.badge}>
-          <p style={{ fontSize: "16px", lineHeight: "1.85", color: "#2A1400", margin: 0 }}>
-            {story.matters}
-          </p>
-        </SectionBlock>
-
-        {/* Supporting visuals */}
-        <div style={{ margin: "36px 0" }}>
-          <div style={{ fontSize: "11px", color: "#B8A898", fontFamily: "system-ui, sans-serif", letterSpacing: "0.14em", marginBottom: "16px" }}>VISUALIZE IT</div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-            {story.visuals.map((visual, index) => (
-  <div
-    key={index}
-    style={{
-      background: "#fffaf3",
-      borderRadius: "20px",
-      padding: "16px",
-      boxShadow: "0 8px 24px rgba(0,0,0,0.06)",
-      marginBottom: "20px"
-    }}
-  >
-    {visual.image && (
-      <img
-        src={visual.image}
-        alt={visual.title}
+function StoryPreviewCard({ story, onOpen, accent = false }) {
+  return (
+    <button
+      onClick={() => onOpen(story)}
+      style={{
+        width: "100%",
+        textAlign: "left",
+        background: accent ? PALETTE.charcoal : PALETTE.white,
+        color: accent ? PALETTE.white : PALETTE.charcoal,
+        border: accent ? "none" : `1px solid ${PALETTE.line}`,
+        borderRadius: "26px",
+        padding: "24px",
+        cursor: "pointer",
+        boxShadow: accent
+          ? "0 18px 40px rgba(0,0,0,0.18)"
+          : "0 18px 40px rgba(48, 28, 14, 0.06)",
+      }}
+    >
+      <div
         style={{
-          width: "100%",
-          height: "220px",
-          objectFit: "cover",
-          borderRadius: "16px",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "10px",
           marginBottom: "14px",
-          display: "block"
         }}
-      />
-    )}
+      >
+        <Pill dark={accent}>{story.category}</Pill>
+        <Pill dark={accent}>{story.readingTime}</Pill>
+      </div>
 
-    <div style={{ fontSize: "1.05rem", fontWeight: 700, marginBottom: "8px" }}>
-      {visual.title}
-    </div>
+      <div
+        style={{
+          fontSize: "clamp(28px, 4vw, 54px)",
+          lineHeight: 0.95,
+          fontWeight: 900,
+          textTransform: "uppercase",
+          letterSpacing: "-0.03em",
+          marginBottom: "12px",
+        }}
+      >
+        {story.title}
+      </div>
 
-    <div style={{ fontSize: "0.98rem", lineHeight: 1.6, color: "#473c2f" }}>
-      {visual.desc}
-    </div>
-  </div>
-))}
+      <div
+        style={{
+          fontSize: "18px",
+          lineHeight: 1.6,
+          color: accent ? "rgba(255,249,240,0.76)" : "#5E534A",
+          maxWidth: "760px",
+          marginBottom: "16px",
+        }}
+      >
+        {story.subtitle}
+      </div>
 
+      {story.heroImage && (
+        <img
+          src={story.heroImage}
+          alt={story.title}
+          style={{
+            width: "100%",
+            height: "320px",
+            objectFit: "cover",
+            borderRadius: "20px",
+            display: "block",
+            marginBottom: "16px",
+          }}
+        />
+      )}
+
+      <div
+        style={{
+          fontSize: "16px",
+          lineHeight: 1.8,
+          color: accent ? PALETTE.white : PALETTE.charcoalSoft,
+          marginBottom: "18px",
+        }}
+      >
+        {story.openingLine}
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "10px",
+          color: accent ? "rgba(255,249,240,0.72)" : "#7B6B5C",
+          fontSize: "14px",
+          fontWeight: 700,
+        }}
+      >
+        <span>{story.region}</span>
+        <span>•</span>
+        <span>{story.period}</span>
+        <span>•</span>
+        <span>{formatDate(story.date)}</span>
+      </div>
+    </button>
+  );
+}
+
+function ArchiveCard({ story, onOpen }) {
+  return (
+    <button
+      onClick={() => onOpen(story)}
+      style={{
+        width: "100%",
+        textAlign: "left",
+        background: PALETTE.white,
+        border: `1px solid ${PALETTE.line}`,
+        borderRadius: "22px",
+        padding: "20px",
+        cursor: "pointer",
+        boxShadow: "0 12px 28px rgba(48, 28, 14, 0.05)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          gap: "18px",
+          alignItems: "flex-start",
+          flexWrap: "wrap",
+        }}
+      >
+        <div style={{ flex: 1, minWidth: "240px" }}>
+          <div
+            style={{
+              fontSize: "13px",
+              fontWeight: 900,
+              textTransform: "uppercase",
+              letterSpacing: "0.14em",
+              color: PALETTE.clay,
+              marginBottom: "8px",
+            }}
+          >
+            {story.category}
+          </div>
+
+          <div
+            style={{
+              fontSize: "28px",
+              lineHeight: 1,
+              fontWeight: 900,
+              textTransform: "uppercase",
+              letterSpacing: "-0.03em",
+              color: PALETTE.charcoal,
+              marginBottom: "8px",
+            }}
+          >
+            {story.title}
+          </div>
+
+          <div
+            style={{
+              fontSize: "16px",
+              lineHeight: 1.65,
+              color: "#6C5E53",
+            }}
+          >
+            {story.subtitle}
           </div>
         </div>
 
-        {/* Remember This */}
-        <div style={{ background: `linear-gradient(135deg, ${cat.heroA}18, ${cat.heroB}10)`, borderRadius: "14px", padding: "24px 22px", border: `1px solid ${cat.badge}22`, margin: "36px 0" }}>
-          <div style={{ fontSize: "11px", color: cat.badge, fontFamily: "system-ui, sans-serif", letterSpacing: "0.14em", fontWeight: "600", marginBottom: "18px" }}>REMEMBER THIS</div>
-          {story.takeaways.map((t, i) => (
-            <div key={i} style={{ display: "flex", gap: "12px", marginBottom: i < story.takeaways.length - 1 ? "14px" : 0 }}>
-              <span style={{ color: cat.badge, fontWeight: "700", fontFamily: "system-ui, sans-serif", fontSize: "15px", flexShrink: 0, marginTop: "2px" }}>{i + 1}.</span>
-              <p style={{ fontSize: "15px", lineHeight: "1.65", color: "#2A1400", margin: 0 }}>{t}</p>
-            </div>
+        <div
+          style={{
+            display: "grid",
+            gap: "8px",
+            minWidth: "180px",
+          }}
+        >
+          <Pill>{story.readingTime}</Pill>
+          <Pill>{formatDate(story.date)}</Pill>
+        </div>
+      </div>
+    </button>
+  );
+}
+
+function VisualCard({ visual }) {
+  return (
+    <div
+      style={{
+        background: PALETTE.white,
+        border: `1px solid ${PALETTE.line}`,
+        borderRadius: "22px",
+        overflow: "hidden",
+        boxShadow: "0 12px 28px rgba(48, 28, 14, 0.05)",
+      }}
+    >
+      {visual.image && (
+        <img
+          src={visual.image}
+          alt={visual.title}
+          style={{
+            width: "100%",
+            height: "220px",
+            objectFit: "cover",
+            display: "block",
+          }}
+        />
+      )}
+
+      <div style={{ padding: "18px" }}>
+        {!visual.image && visual.icon && (
+          <div style={{ fontSize: "34px", marginBottom: "10px" }}>{visual.icon}</div>
+        )}
+
+        <div
+          style={{
+            fontSize: "22px",
+            lineHeight: 1,
+            fontWeight: 900,
+            textTransform: "uppercase",
+            letterSpacing: "-0.02em",
+            color: PALETTE.charcoal,
+            marginBottom: "10px",
+          }}
+        >
+          {visual.title}
+        </div>
+
+        <div
+          style={{
+            fontSize: "15px",
+            lineHeight: 1.7,
+            color: "#66594E",
+          }}
+        >
+          {visual.desc}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HomeView({ todayStory, todayISO, onOpenArchive, onOpenStory }) {
+  return (
+    <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "22px 18px 80px" }}>
+      <section
+        style={{
+          background: `
+            linear-gradient(135deg, rgba(22,19,17,0.98), rgba(36,29,25,0.96)),
+            repeating-linear-gradient(
+              135deg,
+              rgba(255,255,255,0.02) 0px,
+              rgba(255,255,255,0.02) 16px,
+              rgba(0,0,0,0.02) 16px,
+              rgba(0,0,0,0.02) 32px
+            )
+          `,
+          color: PALETTE.white,
+          borderRadius: "34px",
+          padding: "34px 26px",
+          boxShadow: "0 24px 60px rgba(0,0,0,0.22)",
+          marginBottom: "22px",
+        }}
+      >
+        <Label light>The Daily Sankofa</Label>
+
+        <div
+          style={{
+            maxWidth: "980px",
+            fontSize: "clamp(42px, 8vw, 96px)",
+            lineHeight: 0.92,
+            fontWeight: 900,
+            textTransform: "uppercase",
+            letterSpacing: "-0.05em",
+            marginBottom: "16px",
+          }}
+        >
+          African memory.
+          <br />
+          Built daily.
+        </div>
+
+        <div
+          style={{
+            maxWidth: "760px",
+            fontSize: "18px",
+            lineHeight: 1.7,
+            color: "rgba(255,249,240,0.78)",
+            marginBottom: "16px",
+          }}
+        >
+          One story. One return. One deeper way of seeing the continent, its systems,
+          its architecture, its people, and the worlds it built.
+        </div>
+
+        <PatternStrip dark />
+
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "10px",
+            marginBottom: "16px",
+          }}
+        >
+          <Pill dark>{formatDate(todayISO)}</Pill>
+          {todayStory && <Pill dark>{todayStory.readingTime}</Pill>}
+          {todayStory && <Pill dark>{todayStory.category}</Pill>}
+        </div>
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
+          <button
+            onClick={() => onOpenStory(todayStory)}
+            style={{
+              background: PALETTE.burnt,
+              color: PALETTE.white,
+              border: "none",
+              borderRadius: "999px",
+              padding: "14px 18px",
+              fontWeight: 900,
+              fontSize: "15px",
+              textTransform: "uppercase",
+              cursor: "pointer",
+            }}
+          >
+            Enter today’s story
+          </button>
+
+          <button
+            onClick={onOpenArchive}
+            style={{
+              background: "transparent",
+              color: PALETTE.white,
+              border: "1px solid rgba(255,255,255,0.16)",
+              borderRadius: "999px",
+              padding: "14px 18px",
+              fontWeight: 900,
+              fontSize: "15px",
+              textTransform: "uppercase",
+              cursor: "pointer",
+            }}
+          >
+            Open archive
+          </button>
+        </div>
+      </section>
+
+      <StoryPreviewCard story={todayStory} onOpen={onOpenStory} accent />
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: "18px",
+          marginTop: "22px",
+        }}
+      >
+        <SectionBand title="Today at a glance">
+          <div style={{ display: "grid", gap: "12px" }}>
+            <Pill>{todayStory.region}</Pill>
+            <Pill>{todayStory.period}</Pill>
+            <Pill>{todayStory.readingTime}</Pill>
+          </div>
+        </SectionBand>
+
+        <SectionBand title="Remember this">
+          <div style={{ display: "grid", gap: "12px" }}>
+            {todayStory.takeaways.slice(0, 2).map((item, i) => (
+              <div
+                key={i}
+                style={{
+                  fontSize: "15px",
+                  lineHeight: 1.75,
+                  color: PALETTE.charcoalSoft,
+                }}
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </SectionBand>
+
+        <SectionBand title="Reflection">
+          <div
+            style={{
+              fontSize: "18px",
+              lineHeight: 1.8,
+              fontWeight: 700,
+              color: PALETTE.charcoal,
+            }}
+          >
+            {todayStory.reflection}
+          </div>
+        </SectionBand>
+      </div>
+    </div>
+  );
+}
+
+function StoryView({ story, onBack }) {
+  return (
+    <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "22px 18px 80px" }}>
+      <button
+        onClick={onBack}
+        style={{
+          background: "transparent",
+          border: "none",
+          color: PALETTE.clay,
+          fontWeight: 900,
+          fontSize: "14px",
+          textTransform: "uppercase",
+          letterSpacing: "0.12em",
+          cursor: "pointer",
+          padding: 0,
+          marginBottom: "14px",
+        }}
+      >
+        ← Back
+      </button>
+
+      <section
+        style={{
+          background: `
+            linear-gradient(135deg, rgba(22,19,17,0.98), rgba(36,29,25,0.96)),
+            repeating-linear-gradient(
+              135deg,
+              rgba(255,255,255,0.02) 0px,
+              rgba(255,255,255,0.02) 16px,
+              rgba(0,0,0,0.02) 16px,
+              rgba(0,0,0,0.02) 32px
+            )
+          `,
+          color: PALETTE.white,
+          borderRadius: "34px",
+          padding: "34px 26px",
+          boxShadow: "0 24px 60px rgba(0,0,0,0.22)",
+          marginBottom: "22px",
+        }}
+      >
+        <Label light>Today’s Ritual</Label>
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginBottom: "14px" }}>
+          <Pill dark>{story.category}</Pill>
+          <Pill dark>{story.readingTime}</Pill>
+          <Pill dark>{story.region}</Pill>
+        </div>
+
+        <div
+          style={{
+            maxWidth: "980px",
+            fontSize: "clamp(38px, 7vw, 84px)",
+            lineHeight: 0.92,
+            fontWeight: 900,
+            textTransform: "uppercase",
+            letterSpacing: "-0.05em",
+            marginBottom: "14px",
+          }}
+        >
+          {story.title}
+        </div>
+
+        <div
+          style={{
+            maxWidth: "760px",
+            fontSize: "18px",
+            lineHeight: 1.7,
+            color: "rgba(255,249,240,0.78)",
+            marginBottom: "16px",
+          }}
+        >
+          {story.subtitle}
+        </div>
+
+        <PatternStrip dark />
+
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "10px 14px",
+            color: "rgba(255,249,240,0.72)",
+            fontSize: "14px",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: "0.06em",
+          }}
+        >
+          <span>{story.period}</span>
+          <span>•</span>
+          <span>{formatDate(story.date)}</span>
+        </div>
+      </section>
+
+      {story.heroImage && (
+        <section
+          style={{
+            marginBottom: "22px",
+            borderRadius: "30px",
+            overflow: "hidden",
+            boxShadow: "0 18px 40px rgba(48, 28, 14, 0.08)",
+          }}
+        >
+          <img
+            src={story.heroImage}
+            alt={story.title}
+            style={{
+              width: "100%",
+              height: "min(520px, 60vw)",
+              minHeight: "280px",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
+        </section>
+      )}
+
+      <SectionBand title="Opening line" dark>
+        <div
+          style={{
+            fontSize: "clamp(24px, 4vw, 40px)",
+            lineHeight: 1.18,
+            fontWeight: 900,
+            textTransform: "uppercase",
+            letterSpacing: "-0.03em",
+          }}
+        >
+          {story.openingLine}
+        </div>
+      </SectionBand>
+
+      <SectionBand title="Context">
+        <div style={{ fontSize: "17px", lineHeight: 1.9, color: PALETTE.charcoalSoft }}>
+          {story.context}
+        </div>
+      </SectionBand>
+
+      <SectionBand title="The story">
+        <div style={{ display: "grid", gap: "16px" }}>
+          {story.story.map((paragraph, i) => (
+            <p
+              key={i}
+              style={{
+                margin: 0,
+                fontSize: "17px",
+                lineHeight: 1.9,
+                color: PALETTE.charcoal,
+              }}
+            >
+              {paragraph}
+            </p>
           ))}
         </div>
+      </SectionBand>
 
-        {/* Reflection */}
-        <div style={{ background: "#1A0D02", borderRadius: "14px", padding: "28px 24px", margin: "36px 0" }}>
-          <div style={{ fontSize: "11px", color: "#C4871F", fontFamily: "system-ui, sans-serif", letterSpacing: "0.14em", fontWeight: "600", marginBottom: "16px" }}>TODAY'S REFLECTION</div>
-          <p style={{ fontSize: "18px", lineHeight: "1.65", color: "#F5EDE0", margin: 0, fontStyle: "italic", fontWeight: "500" }}>
-            {story.reflection}
-          </p>
+      <SectionBand title="What was really going on" dark>
+        <div
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.9,
+            color: "rgba(255,249,240,0.84)",
+            whiteSpace: "pre-line",
+          }}
+        >
+          {story.deeper}
         </div>
+      </SectionBand>
 
-        {/* Story date */}
-        <p style={{ textAlign: "center", fontSize: "12px", color: "#C8B89A", fontFamily: "system-ui, sans-serif", letterSpacing: "0.08em" }}>
-          {formatDate(story.date)}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function SectionBlock({ label, labelColor, accent, children }) {
-  return (
-    <div style={{ margin: "32px 0" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
-        <div style={{ fontSize: "11px", color: labelColor, fontFamily: "system-ui, sans-serif", letterSpacing: "0.14em", fontWeight: "600" }}>{label}</div>
-        <div style={{ flex: 1, height: "1px", background: "#E0CEB8" }} />
-      </div>
-      {accent ? (
-        <div style={{ background: "#FFFCF5", borderRadius: "12px", padding: "20px", border: "1px solid #EAD9C4" }}>
-          {children}
+      <SectionBand title="Why it matters">
+        <div style={{ fontSize: "17px", lineHeight: 1.9, color: PALETTE.charcoalSoft }}>
+          {story.matters}
         </div>
-      ) : children}
-    </div>
-  );
-}
+      </SectionBand>
 
-// ─── ARCHIVE VIEW ─────────────────────────────────────────────────────────────
-function ArchiveView({ stories, onOpen, onBack }) {
-  return (
-    <div style={{ background: "#F5EDE0", minHeight: "100vh", fontFamily: "'Georgia', 'Times New Roman', serif" }}>
-      <div style={{ padding: "16px 20px", borderBottom: "1px solid #E0CEB8", display: "flex", justifyContent: "space-between", alignItems: "center", background: "#F5EDE0", position: "sticky", top: 0, zIndex: 10 }}>
-        <button onClick={onBack} style={{ background: "none", border: "none", color: "#7A6555", fontSize: "14px", cursor: "pointer", fontFamily: "system-ui, sans-serif", display: "flex", alignItems: "center", gap: "6px" }}>
-          ← Home
-        </button>
-        <div style={{ fontSize: "11px", color: "#B8A898", fontFamily: "system-ui, sans-serif", letterSpacing: "0.1em" }}>SANKOFA</div>
-      </div>
+      {story.visuals?.length > 0 && (
+        <SectionBand title="See it clearly">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+              gap: "18px",
+            }}
+          >
+            {story.visuals.map((visual, i) => (
+              <VisualCard key={i} visual={visual} />
+            ))}
+          </div>
+        </SectionBand>
+      )}
 
-      <div style={{ maxWidth: "560px", margin: "0 auto", padding: "32px 20px 60px" }}>
-        <h2 style={{ fontSize: "26px", color: "#1A0D02", margin: "0 0 6px", fontWeight: "700" }}>Past Stories</h2>
-        <p style={{ fontSize: "14px", color: "#9A8070", margin: "0 0 32px", fontFamily: "system-ui, sans-serif" }}>
-          {stories.length} stor{stories.length !== 1 ? "ies" : "y"} in your archive
-        </p>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-          {stories.map((s) => {
-            const cat = CAT[s.category];
-            return (
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "18px",
+        }}
+      >
+        <SectionBand title="Remember this">
+          <div style={{ display: "grid", gap: "14px" }}>
+            {story.takeaways.map((item, i) => (
               <div
-                key={s.id}
-                onClick={() => onOpen(s)}
-                style={{ background: "#FFFCF5", borderRadius: "14px", padding: "0", overflow: "hidden", border: "1px solid #EAD9C4", cursor: "pointer", display: "flex", boxShadow: "0 2px 10px rgba(60,30,0,0.06)" }}>
-                {/* Color strip */}
-                <div style={{ width: "6px", background: `linear-gradient(to bottom, ${cat.heroA}, ${cat.heroB})`, flexShrink: 0 }} />
-                <div style={{ padding: "16px 18px", flex: 1 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "10px" }}>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "7px", flexWrap: "wrap" }}>
-                        <span style={{ fontSize: "10px", fontFamily: "system-ui, sans-serif", letterSpacing: "0.1em", color: cat.badge, background: cat.badgeBg, padding: "2px 8px", borderRadius: "10px", fontWeight: "600" }}>
-                          {s.category.toUpperCase()}
-                        </span>
-                        <span style={{ fontSize: "11px", color: "#B8A898", fontFamily: "system-ui, sans-serif" }}>
-                          {s.readingTime} · {s.region}
-                        </span>
-                      </div>
-                      <div style={{ fontSize: "16px", fontWeight: "700", color: "#1A0D02", lineHeight: "1.3", marginBottom: "5px" }}>
-                        {s.title}
-                      </div>
-                      <div style={{ fontSize: "13px", color: "#7A6555", lineHeight: "1.4", fontStyle: "italic" }}>
-                        {s.subtitle}
-                      </div>
-                    </div>
-                    <div style={{ fontSize: "12px", color: "#C8B89A", fontFamily: "system-ui, sans-serif", flexShrink: 0, textAlign: "right", lineHeight: "1.4" }}>
-                      {shortDate(s.date)}
-                    </div>
-                  </div>
+                key={i}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "30px 1fr",
+                  gap: "12px",
+                  alignItems: "start",
+                }}
+              >
+                <div
+                  style={{
+                    width: "30px",
+                    height: "30px",
+                    borderRadius: "999px",
+                    background: PALETTE.burnt,
+                    color: PALETTE.white,
+                    fontSize: "14px",
+                    fontWeight: 900,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  {i + 1}
+                </div>
+
+                <div
+                  style={{
+                    fontSize: "15px",
+                    lineHeight: 1.8,
+                    color: PALETTE.charcoalSoft,
+                  }}
+                >
+                  {item}
                 </div>
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        </SectionBand>
+
+        <SectionBand title="Reflection" dark>
+          <div
+            style={{
+              fontSize: "20px",
+              lineHeight: 1.8,
+              fontWeight: 800,
+              color: PALETTE.white,
+            }}
+          >
+            {story.reflection}
+          </div>
+        </SectionBand>
       </div>
     </div>
   );
 }
 
-// ─── ROOT ─────────────────────────────────────────────────────────────────────
-export default function Sankofa() {
+function ArchiveView({ stories, todayISO, onOpen, onBack }) {
+  const pastStories = stories.filter((story) => story.date < todayISO);
+  const todayStory = stories.find((story) => story.date === todayISO);
+  const upcomingStories = stories.filter((story) => story.date > todayISO);
+
+  return (
+    <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "22px 18px 80px" }}>
+      <button
+        onClick={onBack}
+        style={{
+          background: "transparent",
+          border: "none",
+          color: PALETTE.clay,
+          fontWeight: 900,
+          fontSize: "14px",
+          textTransform: "uppercase",
+          letterSpacing: "0.12em",
+          cursor: "pointer",
+          padding: 0,
+          marginBottom: "14px",
+        }}
+      >
+        ← Back
+      </button>
+
+      <section
+        style={{
+          background: `
+            linear-gradient(135deg, rgba(22,19,17,0.98), rgba(36,29,25,0.96)),
+            repeating-linear-gradient(
+              135deg,
+              rgba(255,255,255,0.02) 0px,
+              rgba(255,255,255,0.02) 16px,
+              rgba(0,0,0,0.02) 16px,
+              rgba(0,0,0,0.02) 32px
+            )
+          `,
+          color: PALETTE.white,
+          borderRadius: "34px",
+          padding: "34px 26px",
+          boxShadow: "0 24px 60px rgba(0,0,0,0.22)",
+          marginBottom: "22px",
+        }}
+      >
+        <Label light>The Archive</Label>
+
+        <div
+          style={{
+            maxWidth: "900px",
+            fontSize: "clamp(34px, 6vw, 72px)",
+            lineHeight: 0.94,
+            fontWeight: 900,
+            textTransform: "uppercase",
+            letterSpacing: "-0.05em",
+            marginBottom: "14px",
+          }}
+        >
+          Past. Present.
+          <br />
+          What’s next.
+        </div>
+
+        <div
+          style={{
+            maxWidth: "720px",
+            fontSize: "18px",
+            lineHeight: 1.7,
+            color: "rgba(255,249,240,0.78)",
+          }}
+        >
+          Today stays central, but memory deepens when you can revisit, compare, and
+          move through stories with intention.
+        </div>
+      </section>
+
+      {todayStory && (
+        <SectionBand title="Today">
+          <ArchiveCard story={todayStory} onOpen={onOpen} />
+        </SectionBand>
+      )}
+
+      {pastStories.length > 0 && (
+        <SectionBand title="Past">
+          <div style={{ display: "grid", gap: "16px" }}>
+            {pastStories
+              .sort((a, b) => new Date(a.date) - new Date(b.date))
+              .map((story) => (
+                <ArchiveCard key={story.id} story={story} onOpen={onOpen} />
+              ))}
+          </div>
+        </SectionBand>
+      )}
+
+      {upcomingStories.length > 0 && (
+        <SectionBand title="Upcoming" dark>
+          <div style={{ display: "grid", gap: "16px" }}>
+            {upcomingStories
+              .sort((a, b) => new Date(a.date) - new Date(b.date))
+              .map((story) => (
+                <ArchiveCard key={story.id} story={story} onOpen={onOpen} />
+              ))}
+          </div>
+        </SectionBand>
+      )}
+    </div>
+  );
+}
+
+export default function App() {
+  const [todayISO, setTodayISO] = useState(getTodayISO());
   const [view, setView] = useState("home");
-  const [activeStory, setActiveStory] = useState(null);
+  const [selectedStory, setSelectedStory] = useState(null);
 
-  const todayStory = STORIES.find(s => s.date === TODAY);
-  const pastStories = STORIES.filter(s => s.date < TODAY).sort((a, b) => b.date.localeCompare(a.date));
+  useEffect(() => {
+    setTodayISO(getTodayISO());
+  }, []);
 
-  const openStory = (story) => {
-    setActiveStory(story);
+  const sortedStories = [...STORIES].sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
+
+  const todayStory =
+    sortedStories.find((story) => story.date === todayISO) || sortedStories[0];
+
+  function openStory(story) {
+    setSelectedStory(story);
     setView("story");
-  };
-
-  if (view === "story" && activeStory) {
-    const fromArchive = activeStory.date < TODAY;
-    return <StoryView story={activeStory} onBack={() => setView(fromArchive ? "archive" : "home")} />;
   }
 
-  if (view === "archive") {
-    return <ArchiveView stories={pastStories} onOpen={openStory} onBack={() => setView("home")} />;
+  function goHome() {
+    setSelectedStory(null);
+    setView("home");
   }
 
-  return <HomeView story={todayStory} onEnter={() => openStory(todayStory)} onArchive={() => setView("archive")} />;
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: `
+          linear-gradient(180deg, #C67A30 0%, #A55F2A 120px, ${PALETTE.cream} 120px, ${PALETTE.cream} 100%)
+        `,
+        color: PALETTE.charcoal,
+        fontFamily:
+          'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
+      }}
+    >
+      {view === "home" && (
+        <HomeView
+          todayStory={todayStory}
+          todayISO={todayISO}
+          onOpenArchive={() => setView("archive")}
+          onOpenStory={openStory}
+        />
+      )}
+
+      {view === "archive" && (
+        <ArchiveView
+          stories={sortedStories}
+          todayISO={todayISO}
+          onOpen={openStory}
+          onBack={goHome}
+        />
+      )}
+
+      {view === "story" && selectedStory && (
+        <StoryView story={selectedStory} onBack={goHome} />
+      )}
+    </div>
+  );
 }
