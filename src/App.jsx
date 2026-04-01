@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 
 // ─── CONSTANTS ────────────────────────────────────────────────────────────────
-const TODAY = "2026-04-01";
-
+const TODAY = new Date().toLocaleDateString("en-CA");
 const CAT = {
   "Folktale":          { badge: "#276749", badgeBg: "#e3f2eb", heroA: "#1B4332", heroB: "#52A875" },
   "Trade":             { badge: "#174B6B", badgeBg: "#dceef9", heroA: "#0f3651", heroB: "#2980B9" },
@@ -17,7 +16,7 @@ const CAT = {
 const STORIES = [
   {
     id: 1,
-    date: "2026-03-26",
+    date: "2026-04-01",
     category: "Folktale",
     region: "West Africa",
     period: "Ancient — still told today",
@@ -70,7 +69,7 @@ const STORIES = [
   },
   {
     id: 2,
-    date: "2026-03-27",
+    date: "2026-04-02",
     category: "Trade",
     region: "East Africa",
     period: "9th–16th Century CE",
@@ -118,7 +117,7 @@ const STORIES = [
   },
   {
     id: 3,
-    date: "2026-03-28",
+    date: "2026-04-03",
     category: "Architecture",
     region: "Southern Africa",
     period: "11th–15th Century CE",
@@ -167,7 +166,7 @@ const STORIES = [
   },
   {
     id: 4,
-    date: "2026-03-29",
+    date: "2026-04-04",
     category: "Resistance",
     region: "Central Africa",
     period: "17th Century CE",
@@ -217,7 +216,7 @@ const STORIES = [
   },
   {
     id: 5,
-    date: "2026-03-30",
+    date: "2026-04-05",
     category: "Culture",
     region: "West Africa",
     period: "Ancient — present day",
@@ -265,7 +264,7 @@ const STORIES = [
   },
   {
     id: 6,
-    date: "2026-03-31",
+    date: "2026-04-06",
     category: "Belief Systems",
     region: "West Africa",
     period: "Ancient — 20th Century",
@@ -313,7 +312,7 @@ const STORIES = [
   },
   {
     id: 7,
-    date: "2026-04-01",
+    date: "2026-04-07",
     category: "Political History",
     region: "West Africa",
     period: "1324 CE",
