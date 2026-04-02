@@ -1370,17 +1370,20 @@ function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
         background: PALETTE.paper,
         border: `1px solid ${PALETTE.line}`,
         borderRadius: "26px",
-        padding: "22px",
+        padding: "20px",
         cursor: "pointer",
         boxShadow: "0 12px 28px rgba(48, 28, 14, 0.05)",
         textAlign: "left",
+        overflow: "hidden",
       }}
     >
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: story.heroImage ? "280px 1fr" : "1fr",
-          gap: "22px",
+          gridTemplateColumns: story.heroImage
+            ? "repeat(auto-fit, minmax(280px, 1fr))"
+            : "1fr",
+          gap: "20px",
           alignItems: "center",
         }}
       >
@@ -1404,7 +1407,7 @@ function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "flex-start",
-              gap: "14px",
+              gap: "12px",
               flexWrap: "wrap",
               marginBottom: "10px",
             }}
@@ -1421,7 +1424,14 @@ function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
               {locked ? "Upcoming" : story.category}
             </div>
 
-            <div style={{ display: "grid", gap: "8px" }}>
+            <div
+              style={{
+                display: "flex",
+                gap: "8px",
+                flexWrap: "wrap",
+                justifyContent: "flex-end",
+              }}
+            >
               <Pill>{shortDate(story.date)}</Pill>
               {!locked && <Pill>{story.readingTime}</Pill>}
             </div>
@@ -1429,13 +1439,14 @@ function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
 
           <div
             style={{
-              fontSize: "clamp(26px, 3.4vw, 46px)",
+              fontSize: "clamp(26px, 6vw, 42px)",
               lineHeight: 0.98,
               fontWeight: 900,
               textTransform: "uppercase",
               letterSpacing: "-0.04em",
               color: PALETTE.charcoal,
               marginBottom: "12px",
+              wordBreak: "break-word",
             }}
           >
             {story.title}
@@ -1443,10 +1454,10 @@ function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
 
           <div
             style={{
-              fontSize: "17px",
+              fontSize: "16px",
               lineHeight: 1.7,
               color: PALETTE.textSoft,
-              maxWidth: "720px",
+              maxWidth: "680px",
             }}
           >
             {locked
