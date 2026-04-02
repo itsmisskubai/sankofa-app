@@ -316,6 +316,7 @@ const STORIES = [
     category: "Political History",
     region: "West Africa",
     period: "1324 CE",
+    heroImage: "/images/mansa/mansa-hero.jpg",
     title: "The Man Who Made the Sun Bow",
     subtitle: "How Mansa Musa's pilgrimage broke the Egyptian economy — and forced Africa onto the world's maps",
     readingTime: "6 min",
@@ -353,12 +354,247 @@ const STORIES = [
   {
     icon: "📚",
     title: "Timbuktu's Manuscripts",
-    desc: "An estimated 400,000–700,000 manuscripts — on mathematics, astronomy, medicine, theology, law — preserved in Timbuktu.",
+    desc: "An estimated 400,000-700,000 manuscripts — on mathematics, astronomy, medicine, theology, law — preserved in Timbuktu.",
     image: "/images/mansa/timbuktu-manuscripts.jpg"
-  }
+  },
 ]
+  },
+  {
+  id: 8,
+  date: "2026-04-08",
+  category: "Knowledge",
+  region: "West Africa",
+  period: "14th-16th Century CE",
+  title: "THE CITY THAT TAUGHT THE WORLD",
+  subtitle: "How Timbuktu became one of the most advanced centers of knowledge on earth",
+  readingTime: "6 min",
+  heroImage: "/images/timbuktu/timbuktu-hero.jpg",
+  openingLine:
+    "At a time when much of Europe struggled with literacy, a city in the Sahara was producing thousands of scholars, books, and ideas that shaped entire civilizations.",
+  context:
+    "Timbuktu, located in present-day Mali near the Niger River, emerged as a major intellectual and commercial center between the 14th and 16th centuries. It sat at the intersection of trans-Saharan trade routes, connecting West Africa to North Africa and the wider Islamic world. Gold, salt, and manuscripts flowed through the city, but unlike many trade centers, Timbuktu transformed wealth into knowledge.\n\nThe Mali Empire, and later the Songhai Empire, invested in scholarship, attracting scholars, jurists, astronomers, and theologians from across the Islamic world. Institutions like Sankore, Djinguereber, and Sidi Yahya were not just mosques—they functioned as universities, forming one of the most advanced intellectual ecosystems of the pre-modern world.",
+
+  story:
+    "Timbuktu did not become a center of knowledge by accident. Its rise was tied directly to the wealth generated from trade. Gold from the forests of West Africa moved north across the Sahara, while salt and goods came south. But what made Timbuktu different was what its leaders chose to do with that wealth.\n\nInstead of concentrating only on power or expansion, they invested in learning. Scholars were not marginal figures—they were central to the city's identity. Families built private libraries. Manuscripts were copied, traded, and preserved as valuable assets. In some cases, books were considered more valuable than gold.\n\nAt the heart of this intellectual life was Sankore University. Unlike modern universities with centralized administration, Sankore operated as a decentralized network of scholars. Students studied under individual teachers, often in small groups, progressing through disciplines such as law, theology, mathematics, astronomy, and literature.\n\nThe curriculum was rigorous. Students spent years mastering foundational texts before advancing to interpretation and original thought. Debate was encouraged. Memorization was important, but so was reasoning. Scholars issued legal opinions, wrote commentaries, and contributed to ongoing intellectual traditions that connected Timbuktu to Cairo, Fez, and beyond.\n\nThe scale was significant. At its peak, Timbuktu is believed to have had tens of thousands of students—remarkable for a city of its size. Libraries held hundreds of thousands of manuscripts, covering topics from science to philosophy to governance.\n\nBut this system was not isolated. Timbuktu's scholars were part of a global intellectual network. Ideas moved across deserts and oceans. Knowledge was not seen as belonging to one region—it was something to be built, debated, and expanded collectively.\n\nThis golden age did not last forever. In 1591, the Moroccan invasion disrupted Timbuktu's political and intellectual systems. Scholars were exiled, institutions weakened, and the city's prominence declined. But the manuscripts remained—hidden, preserved, and passed down through generations.",
+
+  deeper:
+    "What Timbuktu represents is not just a city of scholars, but a different model of civilization.\n\nFirst, it shows that knowledge was a core form of power. Unlike systems that prioritized military dominance, Timbuktu's influence came from intellectual authority. Scholars shaped law, governance, and cultural identity.\n\nSecond, it reveals that Africa was not intellectually isolated. The narrative that positions Africa as disconnected from global knowledge systems collapses when you examine Timbuktu. This was a city deeply embedded in transcontinental networks of learning.\n\nThird, it challenges the assumption that formal education must resemble Western institutions. Timbuktu's decentralized, mentor-based system produced highly advanced scholarship without centralized bureaucratic structures.\n\nFinally, it exposes how fragile knowledge systems can be. Political disruption did not just change leadership—it dismantled entire intellectual ecosystems. What was lost was not just power, but continuity of thought.",
+
+  matters:
+    "Timbuktu matters because it directly contradicts one of the most persistent narratives about Africa—that it lacked advanced systems of knowledge before colonial influence.\n\nToday, African education systems are often framed as needing to 'catch up' to global standards. But Timbuktu shows that the continent has its own legacy of intellectual leadership. The issue is not absence—it is interruption.\n\nIt also raises a deeper question: what happens when societies stop investing in knowledge as a central pillar? Timbuktu thrived when learning was valued at the highest level. Its decline reminds us that intellectual infrastructure requires protection, investment, and continuity.\n\nIn a present-day context where information is abundant but depth is rare, Timbuktu's model feels almost radical—slow learning, rigorous debate, and respect for scholarship as a societal foundation.",
+
+  visuals: [
+  {
+    image: "/images/timbuktu/timbuktu-map.jpg",
+    title: "Timbuktu in the Trans-Saharan Network",
+    description:
+      "A map showing Timbuktu's position along major trade routes, explaining how goods, people, and ideas moved between West Africa and the wider world."
+  },
+  {
+    image: "/images/timbuktu/sankore.jpg",
+    title: "Sankore University",
+    description:
+      "One of the central institutions of learning, where scholars taught students in a decentralized but highly rigorous system."
+  },
+  {
+    image: "/images/timbuktu/manuscripts.jpg",
+    title: "Timbuktu Manuscripts",
+    description:
+      "Thousands of preserved texts covering science, law, and philosophy—evidence of a deep and sustained intellectual tradition."
   }
+],
+
+  takeaways: [
+    "Timbuktu was one of the most advanced centers of learning in the pre-modern world.",
+    "Knowledge, not just trade, was treated as a core form of wealth and power.",
+    "African intellectual systems were globally connected, not isolated."
+  ],
+
+  reflection:
+"If a society once treated knowledge as its greatest asset, what does it say about how we treat learning today?"
+},
+{
+id: 9,
+  date: "2026-04-09",
+  category: "Architecture",
+  region: "East Africa",
+  period: "12th-13th Century CE",
+  title: "THE CHURCHES CARVED INTO THE EARTH",
+  subtitle: "How Lalibela turned rock, faith, and engineering into one of the most radical architectural achievements on earth",
+  readingTime: "6 min",
+  heroImage: "/images/lalibela/lalibela-hero.jpg",
+  openingLine:
+    "Most monuments rise upward into the sky. Lalibela was carved downward into the ground.",
+  context:
+    "In the highlands of present-day Ethiopia lies Lalibela, home to one of the most extraordinary sacred architectural sites in the world. The complex consists of eleven medieval churches carved directly into volcanic rock. Instead of being built stone by stone from the ground up, these structures were excavated from the top down, released from the surrounding earth until full buildings emerged. They are associated with King Lalibela of the Zagwe dynasty and are generally dated to the 12th and 13th centuries.\n\nThe churches are not isolated buildings. They form an interconnected sacred landscape of trenches, tunnels, courtyards, passages, and ritual routes. To understand Lalibela properly, you cannot think of it merely as a set of churches. It is architecture, engineering, theology, and political imagination fused into one spatial system.",
+  story:
+    "The ambition behind Lalibela was enormous. According to Ethiopian Christian tradition, King Lalibela sought to create a 'New Jerusalem' after changing conditions in the eastern Mediterranean made pilgrimage to the original Jerusalem more difficult for many believers. Whether taken literally or as symbolic statecraft, the point is clear: this was not ordinary church construction. It was an attempt to reshape sacred geography itself.\n\nWhat makes Lalibela so striking is the method. A structure like Bete Giyorgis was not assembled by laying blocks on top of one another. Workers first isolated a mass of rock by cutting deep trenches into the earth around it. Then they carved into that block, shaping walls, windows, doors, columns, roofs, and interior chambers. In other words, the building was created by subtraction, not addition.\n\nThat required extraordinary planning. In ordinary construction, mistakes can sometimes be corrected by replacing or reinforcing parts. At Lalibela, a serious error during excavation could ruin the whole structure. The builders had to imagine the final form before it visibly existed. They had to think in reverse.\n\nThe churches were also designed for movement. Visitors do not simply approach a façade and enter. They descend, turn, pass through narrow trenches, emerge into light, then cross into shadowed interiors. That sequence matters. Lalibela choreographs the body. It makes worship spatial. You do not just see belief there; you move through it.\n\nDifferent churches within the complex carry different architectural expressions. Some have basilica-like forms. Others feature columns, carved details, or symbolic shapes that tie them to Ethiopian Christian traditions and wider influences. Bete Giyorgis, the most famous, appears in the shape of a cross when seen from above, a form so precise and dramatic that it still unsettles first-time viewers.\n\nAnd the site did not become significant only because it was technically impressive. It remained active. Priests continued to serve there. Pilgrims continued to come. Ritual life continued to animate the stone. That continuity matters because Lalibela is not merely a ruin admired by tourists. It is living sacred architecture.",
+  deeper:
+    "Lalibela matters because it expands what architecture can mean.\n\nToo often, monumental architecture is discussed as a story of height, empire, and spectacle: pyramids, cathedrals, palaces, towers. Lalibela offers another model. Its power comes not from rising above the earth, but from being cut into it. It inverts the usual visual language of monumentality and still achieves overwhelming presence.\n\nIt also reveals that African architecture cannot be reduced to the stereotypes people often carry: temporary, purely vernacular, technically limited, or lacking abstraction. Lalibela required geometry, sequencing, labor coordination, geological understanding, and a clear symbolic program. It is proof of architectural thought at civilizational scale.\n\nThere is also a political layer here. To build a site like Lalibela is to make a statement about legitimacy, devotion, and identity. It says: this kingdom can shape sacred space, not merely inherit it. It says faith can be territorial, material, and visually organized. It says a ruler's authority can be embedded in stone.\n\nAnd because the churches are carved from living rock rather than assembled from separate materials, Lalibela also refuses easy categories. It is architecture, but also sculpture. It is building, but also excavation. It is infrastructure, but also theology made visible.",
+  matters:
+    "Lalibela matters because it breaks narrow assumptions about African architecture and African historical complexity. It is not just evidence that Africans built beautifully. It is evidence that they conceived space symbolically, engineered with precision, and built at monumental scale in ways that still challenge modern viewers.\n\nIt also matters now because people still speak about African development as though sophistication only becomes real when it resembles Europe, North America, or parts of Asia. Lalibela reminds us that African design traditions have long contained their own forms of sophistication, logic, and sacred symbolism.\n\nIn present-day conversations about heritage, architecture, and identity, Lalibela also raises a harder question: what would it mean to study African built environments not as curious exceptions, but as central contributions to the world's architectural imagination?",
+  visuals: [
+    {
+      image: "/images/lalibela/lalibela-map.jpg",
+      title: "Lalibela in Ethiopia",
+      desc: "A map locating Lalibela in the Ethiopian highlands, helping explain why it emerged as both a royal and sacred center."
+    },
+    {
+      image: "/images/lalibela/bete-giyorgis.jpg",
+      title: "Bete Giyorgis",
+      desc: "The most iconic of Lalibela's churches — carved downward into rock and visible from above as a monumental cross-shaped form."
+    },
+    {
+      image: "/images/lalibela/rock-cut.jpg",
+      title: "Architecture by Excavation",
+      desc: "A visual reminder that Lalibela's churches were created by cutting into living rock, requiring reverse-planned engineering rather than ordinary construction."
+    }
+  ],
+  takeaways: [
+    "Lalibela's churches were carved top-down from living rock, making subtraction — not assembly — the basis of construction.",
+    "The site is a full sacred landscape of tunnels, trenches, routes, and churches, not a random cluster of buildings.",
+    "Lalibela proves that African architectural traditions included monumental engineering, symbolic precision, and spatial imagination at world-historical scale."
+  ],
+  reflection:
+    "What changes when you stop thinking of architecture as just shelter or spectacle and start seeing it as a way a civilization tells you what it believes is sacred?"
+},
+{
+id: 10,
+  date: "2026-04-10",
+  category: "Art & Power",
+  region: "West Africa",
+  period: "16th Century onward",
+  title: "THE ART THEY TOOK AND CALLED THEIR OWN",
+  subtitle: "How the Benin Bronzes recorded royal power, memory, and craftsmanship — and why their afterlife still exposes empire",
+  readingTime: "6 min",
+  heroImage: "/images/benin/benin-hero.jpg",
+  openingLine:
+    "The Benin Bronzes were not decorative trophies. They were state memory cast in metal.",
+  context:
+    "The Benin Bronzes are a large body of brass and bronze works produced for the royal court of the Kingdom of Benin, in present-day southern Nigeria, from at least the 16th century onward. They include plaques, commemorative heads, animal and human figures, ornaments, and regalia made by specialist guild artists attached to the Oba’s court. These works were not random luxury objects. They were part of a political, historical, and spiritual system that made royal authority visible and durable.",
+  story:
+    "In Benin City, art was not separated from power. The royal palace was once lined with cast brass plaques showing warriors, attendants, court rituals, foreign traders, and the Oba himself. These plaques did not merely beautify the palace. They organized memory. They announced hierarchy. They taught viewers what the kingdom valued and how power was staged.\n\nThe makers were highly skilled court artists working in brass-casting guilds, using the lost-wax technique to produce works of astonishing technical precision. This was not casual craftsmanship. It was a specialized system of production tied directly to the court. Knowledge of material, form, symbolism, and ritual meaning was embedded in the work.\n\nSome objects, like commemorative heads of queens and kings, were used on ancestral altars. These were not portrait busts in the modern European sense. They were ritual objects linking the living ruler to dynastic continuity, sacred legitimacy, and the memory of those who came before.\n\nOthers, like plaques with Portuguese traders, recorded Benin’s contact with the outside world. They show that Benin was not isolated. It was engaged in trade and diplomatic exchange, and its artists were capable of absorbing outside figures into a distinctly Edo visual language without losing control of their own symbolic system.\n\nThen in 1897 came the British punitive expedition. Benin City was invaded, burned, and looted. Thousands of court objects were taken and dispersed across Europe and North America. Once removed from the palace and altar contexts that gave them meaning, they were recast in imperial collections as ethnographic curiosities, trophies, and museum masterpieces.\n\nThat afterlife matters. The same objects that once declared Benin’s sovereignty became proof of British conquest inside imperial institutions. The bronzes survived, but the story around them was violently rewritten.",
+  deeper:
+    "What was really going on was not simply artistic production. It was the making of political memory.\n\nThe Benin Bronzes functioned inside a court system where visual culture reinforced authority, hierarchy, and continuity. They were part of how the kingdom represented itself to itself. In that sense, they were archives in metal.\n\nThat is why the looting matters beyond theft. When the bronzes were taken, it was not only objects that were removed. A whole structure of meaning was broken. Sacred, dynastic, and architectural relationships were severed. The bronzes entered museums as isolated art objects, but they had originally lived inside a much larger system of palace ritual and royal memory.\n\nTheir later celebration in European and American museums also reveals something uncomfortable: empires often praise the beauty of what they have stolen while refusing to fully face what made that possession possible.",
+  matters:
+    "The Benin Bronzes matter because they force two corrections at once. First, they correct the lie that African court art lacked technical sophistication, symbolic depth, or historical self-consciousness. These works show the opposite: precision, political intelligence, and artistic systems of the highest order.\n\nSecond, they matter right now because restitution is not just about returning beautiful things. It is about whether institutions built through conquest are willing to confront the violence beneath their collections. The question is no longer whether the bronzes are important. The question is who gets to live with that importance, tell its story, and inherit its meaning.",
+  visuals: [
+    {
+      image: "/images/benin/queen-mother-head.jpg",
+      title: "Commemorative Head of a Queen Mother",
+      desc: "A royal altar object showing how Benin casting preserved dynastic memory, authority, and ritual continuity."
+    },
+    {
+      image: "/images/benin/warrior-plaque.jpg",
+      title: "Plaque with Warrior and Attendants",
+      desc: "One of the palace plaques that transformed court life, military hierarchy, and royal order into visual history."
+    },
+    {
+      image: "/images/benin/portuguese-plaque.jpg",
+      title: "Plaque with Portuguese Traders",
+      desc: "A reminder that Benin was engaged with global exchange on its own terms long before colonial conquest recast that contact."
+    }
+  ],
+  takeaways: [
+    "The Benin Bronzes were court archives in metal, not mere decoration.",
+    "Their making depended on specialized Edo guild knowledge and a deeply structured royal system.",
+    "Their looting in 1897 was not just theft of objects but the violent stripping of context, sovereignty, and historical control."
+  ],
+  reflection:
+    "When a people's memory is taken, displayed elsewhere, and admired without full accountability, what exactly is the world calling heritage?"
+},
+{
+  id: 11,
+  date: "2026-04-11",
+  category: "Trade",
+  region: "West Africa",
+  period: "8th-16th Century CE",
+  title: "THE ROADS THAT THE DESERT DID NOT STOP",
+  subtitle: "How camel caravans turned the Sahara from a barrier into one of the great commercial highways of the world",
+  readingTime: "6 min",
+  heroImage: "/images/trans-sahara/trans-sahara-hero.jpg",
+  openingLine:
+    "The Sahara did not end civilization. It forced people to invent a harder one.",
+  context:
+    "The trans-Saharan trade routes connected North Africa to the Sahel and the forest-edge economies of West Africa for centuries. Once camel caravans made long-distance desert crossing more sustainable, the Sahara stopped being only a geographic obstacle and became a commercial corridor. Salt moved south. Gold moved north. Alongside them moved textiles, horses, manuscripts, ideas, and human beings under conditions that were not always voluntary. The desert did not separate worlds as cleanly as modern maps make it seem. It linked them.",
+  story:
+    "The key technological shift was the large-scale use of the camel. A desert that would have broken many earlier transport systems became traversable through caravans organized around endurance, water knowledge, and route discipline. These were not random wanderings across sand. They were structured passages shaped by wells, oasis towns, political agreements, and accumulated expertise.\n\nBy the early medieval period, cities in North Africa and the Sahel were being tied into a commercial system that moved goods across enormous distances. Salt from Saharan mines such as Taghaza was essential to life and preservation. Gold from West Africa was essential to currency, power, and wider Mediterranean and Islamic economies. That exchange created more than profit. It created cities.\n\nPlaces such as Awdaghust, Sijilmasa, Gao, Walata, and later Timbuktu rose in importance because they sat in relation to these routes. They functioned as nodes of exchange, taxation, scholarship, and political negotiation. Rulers understood quickly that control of trade did not just mean wealth. It meant leverage.\n\nEmpires such as Ghana, Mali, and Songhai did not emerge in isolation from this system. They benefited from taxing, securing, and organizing the movement of trade. Gold did not travel by itself. It moved through political worlds that could protect caravans, regulate access, and project authority over territory.\n\nBut the trade was never as simple as the clean classroom version: gold north, salt south. Textiles, copper, horses, books, and enslaved people also moved through these networks. So did religion and administrative practices. Islam spread through merchants, scholars, courts, and political incentives, becoming entangled with local structures in different ways across the region.\n\nAnd none of this was easy. The Sahara remained deadly. Caravans depended on timing, water knowledge, animal health, and collective coordination. A route was never only a line on a map. It was infrastructure built from memory, risk, and repetition.",
+  deeper:
+    "What was really going on was not simply exchange. It was system-building.\n\nThe trans-Saharan trade routes created economic corridors, but they also created political and intellectual corridors. States grew around them. Urban life deepened because of them. Islamic scholarship and legal culture moved through them. The desert became a medium through which institutions, not just goods, circulated.\n\nThis matters because modern people often imagine trade as something secondary to civilization, as if culture happens first and trade comes later. In reality, trade routes often generate the very conditions under which cities, courts, taxation systems, and scholarly centers become durable.\n\nIt also matters because the routes reveal that African history cannot be read through coastal contact alone. Long before Atlantic domination, West Africa was already deeply connected northward through structured exchange that shaped major states and major forms of power.",
+  matters:
+    "The trans-Saharan trade matters because it overturns lazy ideas of Africa as disconnected, passive, or waiting to be opened by outsiders. The Sahara was not a blank emptiness around history. It was part of history’s machinery.\n\nIt also matters now because the language of infrastructure still shapes power. Whoever controls routes, corridors, ports, customs points, logistics, and flow still shapes whose economies expand and whose remain dependent. The old caravans are gone, but the politics of movement have not disappeared.\n\nIf you understand the trans-Saharan world properly, you stop seeing Africa as a set of isolated regions and start seeing it as a continent whose internal and northward linkages helped produce wealth, states, and ideas long before Europe claimed to be the center of the map.",
+  visuals: [
+    {
+      image: "/images/trans-sahara/routes-map.jpg",
+      title: "Trade Routes Across the Western Sahara",
+      desc: "A map of the major routes c. 1000-1500,showing how trade moved through the desert by way of specific corridors rather than vague empty space."
+    },
+    {
+      image: "/images/trans-sahara/caravan.jpg",
+      title: "Camel Caravan Infrastructure",
+      desc: "The caravan was not just transport. It was the technology that made a commercial system across the Sahara possible."
+    },
+    {
+      image: "/images/trans-sahara/salt-gold.jpg",
+      title: "Salt and Gold",
+      desc: "The famous exchange was never only symbolic. Salt sustained life; gold sustained currencies and imperial ambition."
+    }
+  ],
+  takeaways: [
+    "The Sahara was transformed from a barrier into a commercial highway through camel caravan systems and route knowledge.",
+    "Trans-Saharan trade helped grow cities, empires, and scholarly networks across West Africa and North Africa.",
+    "Trade did not move only goods. It moved religion, law, political influence, and human beings through systems of power."
+  ],
+  reflection:
+    "What changes when you stop seeing a desert as empty land and start seeing it as infrastructure that shaped empires?"
+},
+{
+  id: 12,
+  date: "2026-04-12",
+  category: "Empire",
+  region: "Northeast Africa",
+  period: "c. 1070 BCE-350 CE",
+  title: "THE EMPIRE SOUTH OF EGYPT",
+  subtitle: "How the Kingdom of Kush rivaled, ruled, and reshaped one of the most famous civilizations in history",
+  readingTime: "6 min",
+  heroImage: "/images/kush/kush-hero.jpg",
+  openingLine:
+    "Long before outsiders drew borders across Africa, a kingdom to the south of Egypt rose strong enough to rule it.",
+  context:
+    "The Kingdom of Kush emerged in what is now Sudan, along the Nile River, south of ancient Egypt. It developed through key centers like Napata and later Meroë, building political, military, and cultural strength over centuries. While often treated as a footnote to Egypt in popular narratives, Kush was a powerful state in its own right, deeply engaged with Nile Valley civilization while maintaining its own identity and systems.",
+  story:
+    "Kush did not begin as an isolated civilization. It grew in constant interaction with Egypt. Trade, conflict, influence, and adaptation shaped both societies over time.\n\nAt different points, Egypt controlled parts of Nubia. But power did not remain one-sided. By the 8th century BCE, Kush had consolidated enough strength to move north. Under King Piye, Kushite forces invaded and unified Egypt, establishing what is now known as the 25th Dynasty.\n\nThis was not a minor moment. For a period, rulers from Kush governed Egypt, positioning themselves as legitimate pharaohs. They adopted and adapted Egyptian religious and political traditions, presenting themselves as restorers of order rather than outsiders. Their rule stretched across a vast territory, linking regions of the Nile under one authority.\n\nAfter being pushed back by Assyrian pressure, Kush did not disappear. It re-centered itself further south at Meroë. There, it developed new forms of power. Iron production expanded. Trade networks extended deeper into Africa. A distinct script emerged. The kingdom continued to evolve rather than simply decline.\n\nOne of the most visible markers of Kushite power is its pyramids. Hundreds of them still stand in Sudan today. Smaller and steeper than Egyptian pyramids, they mark royal burials and assert dynastic continuity. They are a reminder that monumental architecture in the Nile Valley was never exclusive to Egypt.\n\nKush lasted for centuries, adapting to changing political and economic conditions before eventually declining around the 4th century CE. But its legacy did not vanish. It remains embedded in the landscape, in archaeological records, and in the broader history of African state formation.",
+  deeper:
+    "What was really going on was not imitation, but negotiation of power and identity.\n\nKush shows how civilizations influence each other without collapsing into each other. It engaged with Egyptian systems of religion, kingship, and symbolism, but it did not become Egypt. It maintained its own centers, its own strategies, and eventually its own innovations.\n\nIt also disrupts the tendency to treat Egyptian civilization as an isolated pinnacle. The Nile Valley was a connected corridor. Power flowed both north and south. Kushite rule over Egypt is one of the clearest examples of that reality.\n\nFinally, Kush reveals something about historical framing. When narratives are built around a single dominant civilization, neighboring powers are often reduced or ignored. Kush was not a peripheral culture. It was a major political actor whose story was compressed by later retellings.",
+  matters:
+    "The Kingdom of Kush matters because it forces a rethinking of how African civilizations are ranked and remembered. It challenges the idea that influence only flowed in one direction and that power in the Nile Valley was always centered in Egypt.\n\nIt also matters today because the visibility of history shapes identity. When Kush is left out or minimized, it narrows the understanding of African political and cultural complexity. Restoring its place expands what people believe was possible on the continent.\n\nIn a present-day world still shaped by narratives of hierarchy between civilizations, Kush stands as evidence that power, innovation, and statecraft in Africa were neither isolated nor secondary. They were central to the region’s historical development.",
+  visuals: [
+    {
+      image: "/images/kush/kush-map.jpg",
+      title: "Kush Along the Nile",
+      desc: "A map showing the location of Kush relative to Egypt, highlighting the connected Nile corridor rather than a strict boundary."
+    },
+    {
+      image: "/images/kush/kush-pyramids.jpg",
+      title: "Pyramids of Meroë",
+      desc: "The royal pyramids of Kush demonstrate that monumental architecture in the Nile Valley extended beyond Egypt."
+    },
+    {
+      image: "/images/kush/piye-stela.jpg",
+      title: "Victory Stela of King Piye",
+      desc: "An inscription documenting Kush's conquest of Egypt, asserting legitimacy and authority as rulers of the Nile."
+    }
+  ],
+  takeaways: [
+    "Kush was a major Nile Valley power that at one point ruled Egypt as the 25th Dynasty.",
+    "It maintained its own political and cultural identity while engaging deeply with Egyptian systems.",
+    "Its pyramids, cities, and records show that advanced statecraft and architecture extended far beyond Egypt alone."
+  ],
+  reflection:
+    "What histories have been reduced to footnotes simply because another civilization was chosen as the main story?"
+}
 ];
+
 function formatDate(dateString) {
   const d = new Date(dateString + "T12:00:00");
   return d.toLocaleDateString("en-US", {
@@ -1131,47 +1367,75 @@ function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
       }}
       style={{
         width: "100%",
-        textAlign: "left",
         background: PALETTE.paper,
         border: `1px solid ${PALETTE.line}`,
-        borderRadius: "22px",
-        padding: "20px",
+        borderRadius: "26px",
+        padding: "22px",
         cursor: "pointer",
         boxShadow: "0 12px 28px rgba(48, 28, 14, 0.05)",
+        textAlign: "left",
       }}
     >
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
-          gap: "18px",
-          alignItems: "flex-start",
-          flexWrap: "wrap",
+          display: "grid",
+          gridTemplateColumns: story.heroImage ? "280px 1fr" : "1fr",
+          gap: "22px",
+          alignItems: "center",
         }}
       >
-        <div style={{ flex: 1, minWidth: "240px" }}>
+        {story.heroImage && (
+          <img
+            src={story.heroImage}
+            alt={story.title}
+            style={{
+              width: "100%",
+              height: "220px",
+              objectFit: "cover",
+              borderRadius: "18px",
+              display: "block",
+            }}
+          />
+        )}
+
+        <div style={{ minWidth: 0 }}>
           <div
             style={{
-              fontSize: "13px",
-              fontWeight: 900,
-              textTransform: "uppercase",
-              letterSpacing: "0.14em",
-              color: locked ? PALETTE.textSoft : PALETTE.clay,
-              marginBottom: "8px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-start",
+              gap: "14px",
+              flexWrap: "wrap",
+              marginBottom: "10px",
             }}
           >
-            {locked ? "Upcoming" : story.category}
+            <div
+              style={{
+                fontSize: "13px",
+                fontWeight: 900,
+                textTransform: "uppercase",
+                letterSpacing: "0.14em",
+                color: locked ? PALETTE.textSoft : PALETTE.clay,
+              }}
+            >
+              {locked ? "Upcoming" : story.category}
+            </div>
+
+            <div style={{ display: "grid", gap: "8px" }}>
+              <Pill>{shortDate(story.date)}</Pill>
+              {!locked && <Pill>{story.readingTime}</Pill>}
+            </div>
           </div>
 
           <div
             style={{
-              fontSize: "28px",
-              lineHeight: 1,
+              fontSize: "clamp(26px, 3.4vw, 46px)",
+              lineHeight: 0.98,
               fontWeight: 900,
               textTransform: "uppercase",
-              letterSpacing: "-0.03em",
+              letterSpacing: "-0.04em",
               color: PALETTE.charcoal,
-              marginBottom: "8px",
+              marginBottom: "12px",
             }}
           >
             {story.title}
@@ -1179,42 +1443,16 @@ function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
 
           <div
             style={{
-              fontSize: "16px",
-              lineHeight: 1.65,
+              fontSize: "17px",
+              lineHeight: 1.7,
               color: PALETTE.textSoft,
-              marginBottom: story.heroImage ? "14px" : 0,
+              maxWidth: "720px",
             }}
           >
             {locked
               ? "Not yet time. Focus on today's story first."
               : story.subtitle}
           </div>
-
-          {story.heroImage && (
-            <img
-              src={story.heroImage}
-              alt={story.title}
-              style={{
-                width: "100%",
-                maxWidth: "340px",
-                height: "180px",
-                objectFit: "cover",
-                borderRadius: "16px",
-                display: "block",
-              }}
-            />
-          )}
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gap: "8px",
-            minWidth: "180px",
-          }}
-        >
-          <Pill>{shortDate(story.date)}</Pill>
-          {!locked && <Pill>{story.readingTime}</Pill>}
         </div>
       </div>
     </button>
@@ -1260,40 +1498,44 @@ function ArchiveView({ stories, todayISO, onOpen, onBack, onGoToday }) {
         <Label light>The Archive</Label>
 
         <div
-          style={{
-            maxWidth: "900px",
-            fontSize: "clamp(34px, 6vw, 72px)",
-            lineHeight: 0.94,
-            fontWeight: 900,
-            textTransform: "uppercase",
-            letterSpacing: "-0.05em",
-            marginBottom: "14px",
-          }}
+  style={{
+    maxWidth: "900px",
+    margin: "0 auto",
+    textAlign: "center",
+    fontSize: "clamp(34px, 6vw, 72px)",
+    lineHeight: 0.94,
+    fontWeight: 900,
+    textTransform: "uppercase",
+    letterSpacing: "-0.05em",
+    marginBottom: "14px",
+  }}
         >
-          Past. Present.
-          <br />
-          What's next.
+          <div>Past. Present.</div>
+          <div>What's next.</div>
         </div>
 
         <div
-          style={{
-            maxWidth: "720px",
-            fontSize: "18px",
-            lineHeight: 1.7,
-            color: "rgba(255,249,240,0.78)",
-          }}
-        >
+  style={{
+    maxWidth: "720px",
+    margin: "0 auto",
+    textAlign: "center",
+    fontSize: "18px",
+    lineHeight: 1.7,
+    color: "rgba(...)",
+  }}
+>
           Today's story stays central. Upcoming stories stay visible, but they only
           fully open on their actual day.
         </div>
       </section>
 
       {todayStory && (
-        <SectionBand title="Today">
-          <ArchiveCard story={todayStory} onOpen={onOpen} />
-        </SectionBand>
-      )}
-
+  <SectionBand title="Today">
+    <div style={{ maxWidth: "920px", margin: "0 auto" }}>
+      <ArchiveCard story={todayStory} onOpen={onOpen} />
+    </div>
+  </SectionBand>
+)}
       {pastStories.length > 0 && (
         <SectionBand title="Past">
           <div style={{ display: "grid", gap: "16px" }}>
