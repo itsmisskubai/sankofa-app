@@ -592,6 +592,191 @@ id: 10,
   ],
   reflection:
     "What histories have been reduced to footnotes simply because another civilization was chosen as the main story?"
+},
+{
+  id: 13,
+  date: "2026-04-13",
+  category: "Power",
+  region: "Southern Africa",
+  period: "19th Century",
+  title: "THE KING WHO REBUILT WAR",
+  subtitle: "How Shaka Zulu transformed warfare, discipline, and state power in Southern Africa",
+  readingTime: "6 min",
+  heroImage: "/images/shaka/shaka-hero.jpg",
+  openingLine:
+    "Shaka Zulu did not just fight wars. He changed how they were fought.",
+  context:
+    "Shaka Zulu rose to power in the early 19th century in what is now South Africa. He became leader of the Zulu kingdom during a time of intense regional change known as the Mfecane. Through military innovation, discipline, and centralized authority, he transformed a small chiefdom into a dominant regional power.",
+  story:
+    "Before Shaka, warfare in the region often involved skirmishes and symbolic conflict. Under his leadership, it became structured, strategic, and deadly efficient.\n\nHe reorganized regiments by age, enforced strict discipline, and introduced new tactics such as the 'horns of the buffalo' formation — where forces would encircle opponents while a central force held them in place.\n\nWeapons also changed. Shaka is associated with the short stabbing spear, designed for close combat rather than throwing. This shift forced soldiers into tighter, more controlled engagements.\n\nHis system built not just an army, but a state. Loyalty, identity, and structure were enforced through military organization. The kingdom expanded rapidly, reshaping the political landscape of the region.\n\nBut his rule was also harsh. Discipline was severe, and expansion came at a human cost. After his death in 1828, internal tensions reshaped the kingdom again.",
+  deeper:
+    "What was really going on was the consolidation of power through system design. Shaka’s innovations were not random acts of brutality. They were part of a deliberate restructuring of how authority, loyalty, and warfare operated.\n\nHe turned military organization into social organization. Age groups became regiments. Regiments became identity. Identity became power.",
+  matters:
+    "Shaka Zulu matters because he challenges simplistic narratives of African leadership. He was not just a warrior king. He was a strategist who reshaped systems.\n\nBut his story also reminds us that power built through force carries consequences. Understanding him requires holding both innovation and impact together.",
+  visuals: [
+    {
+      image: "/images/shaka/shaka-map.png",
+      title: "Zulu Kingdom Expansion",
+      desc: "A map showing the territorial growth and influence of the Zulu kingdom under Shaka."
+    },
+    {
+      image: "/images/shaka/zulu-warriors.jpg",
+      title: "Zulu Regiments",
+      desc: "Depictions of organized regiments that defined Shaka’s military system."
+    },
+    {
+      image: "/images/shaka/assegai.jpg",
+      title: "The Assegai",
+      desc: "The short stabbing spear associated with Shaka’s shift in combat tactics."
+    }
+  ],
+  takeaways: [
+    "Shaka transformed warfare through structure, discipline, and strategy.",
+    "Military organization became a foundation for political power.",
+    "His legacy is both innovation and disruption."
+  ],
+  reflection:
+    "When does innovation become domination — and how should history remember that line?"
+},
+{
+  id: 14,
+  date: "2026-04-14",
+  category: "Architecture",
+  region: "Southern Africa",
+  period: "11th–15th Century",
+  title: "THE STONE CITY WITHOUT MORTAR",
+  subtitle: "How Great Zimbabwe built power, trade, and architecture without written explanation",
+  readingTime: "6 min",
+  heroImage: "/images/zimbabwe/zimbabwe-hero.jpg",
+  openingLine:
+    "A city of stone rose without mortar — and outsiders refused to believe who built it.",
+  context:
+    "Great Zimbabwe was a powerful city-state in present-day Zimbabwe, flourishing between the 11th and 15th centuries. It served as a political and economic center connected to regional and international trade networks.",
+  story:
+    "The city is most famous for its massive stone walls, built without mortar. These structures required precise engineering and labor organization.\n\nGreat Zimbabwe controlled trade routes linking inland gold resources to coastal trade networks connected to the Indian Ocean.\n\nFor years, colonial narratives refused to credit Africans with building it, attributing it to outsiders. This distortion reveals more about colonial thinking than the site itself.",
+  deeper:
+    "What was really going on was a system of political authority supported by architecture and trade.\n\nThe walls were not just defensive. They were symbolic — expressing power, order, and permanence.",
+  matters:
+    "Great Zimbabwe matters because it directly challenges narratives that denied African architectural and political sophistication.\n\nIt also shows how trade, power, and design intersected in precolonial Africa.",
+  visuals: [
+    {
+      image: "/images/zimbabwe/ruins.jpg",
+      title: "Great Zimbabwe Ruins",
+      desc: "The stone structures that defined the city’s architecture."
+    }
+  ],
+  takeaways: [
+    "Great Zimbabwe was a major political and economic center.",
+    "Its architecture reflects advanced engineering.",
+    "Narratives around it were distorted by colonial bias."
+  ],
+  reflection:
+    "What does it mean when history refuses to credit its creators?"
+},
+{
+  id: 15,
+  date: "2026-04-15",
+  category: "Culture",
+  region: "East Africa",
+  period: "10th–16th Century",
+  title: "THE COAST THAT SPOKE MANY WORLDS",
+  subtitle: "How the Swahili Coast became a meeting point of Africa, Arabia, and Asia",
+  readingTime: "6 min",
+  heroImage: "/images/swahili/swahili-hero.jpg",
+  openingLine:
+    "On the East African coast, language itself became a map of connection.",
+  context:
+    "The Swahili Coast stretched along East Africa, linking African societies with traders from Arabia, Persia, India, and beyond.",
+  story:
+    "Swahili culture developed through trade and interaction. Cities like Kilwa and Mombasa became hubs of commerce and culture.\n\nSwahili language itself reflects this exchange — rooted in Bantu languages but influenced by Arabic and others.",
+  deeper:
+    "What was really going on was cultural synthesis — not replacement, but blending.",
+  matters:
+    "The Swahili Coast shows that African identity has always been dynamic and interconnected.",
+  visuals: [
+    {
+      image: "/images/swahili/kilwa.jpg",
+      title: "Kilwa Ruins",
+      desc: "One of the major Swahili trading cities."
+    }
+  ],
+  takeaways: [
+    "Swahili culture emerged through connection, not isolation.",
+    "Trade shaped identity as much as economics.",
+    "Language reflects history."
+  ],
+  reflection:
+    "What does your language reveal about where you come from?"
+},
+{
+  id: 16,
+  date: "2026-04-16",
+  category: "Statecraft",
+  region: "West Africa",
+  period: "14th–19th Century",
+  title: "THE CITIES THAT TRADED AND RULED",
+  subtitle: "How the Hausa city-states built wealth through trade and governance",
+  readingTime: "6 min",
+  heroImage: "/images/hausa/hausa-hero.jpg",
+  openingLine:
+    "Power does not always come from one empire. Sometimes it comes from many cities.",
+  context:
+    "The Hausa city-states were a network of independent but connected urban centers in West Africa.",
+  story:
+    "Cities like Kano and Katsina thrived through trade, crafts, and governance.\n\nThey were politically independent but economically connected.",
+  deeper:
+    "What was really going on was decentralized power.",
+  matters:
+    "They show that African political systems were not always centralized empires.",
+  visuals: [
+    {
+      image: "/images/hausa/kano.jpg",
+      title: "Kano City",
+      desc: "A major Hausa city-state."
+    }
+  ],
+  takeaways: [
+    "Power can be distributed.",
+    "Trade drives urban growth.",
+    "Networks matter."
+  ],
+  reflection:
+    "Is power stronger when centralized or shared?"
+},
+{
+  id: 17,
+  date: "2026-04-17",
+  category: "Knowledge",
+  region: "East Africa",
+  period: "Medieval–Early Modern",
+  title: "THE BOOKS THAT HELD A CIVILIZATION",
+  subtitle: "How Ethiopian manuscripts preserved faith, history, and knowledge",
+  readingTime: "6 min",
+  heroImage: "/images/ethiopia/ethiopia-hero.jpg",
+  openingLine:
+    "Some civilizations built in stone. Others built in ink.",
+  context:
+    "Ethiopian manuscripts are among the oldest continuous written traditions in Africa.",
+  story:
+    "Religious texts, histories, and teachings were preserved through manuscripts written in Ge’ez.\n\nThese works were often illustrated and carefully protected.",
+  deeper:
+    "What was really going on was knowledge preservation.",
+  matters:
+    "They show that Africa has long traditions of literacy and scholarship.",
+  visuals: [
+    {
+      image: "/images/ethiopia/manuscript.jpg",
+      title: "Ethiopian Manuscript",
+      desc: "An example of preserved written tradition."
+    }
+  ],
+  takeaways: [
+    "Knowledge systems existed deeply in Africa.",
+    "Writing preserves identity.",
+    "History survives through records."
+  ],
+  reflection:
+    "What knowledge today is worth preserving for centuries?"
 }
 ];
 
@@ -1356,6 +1541,9 @@ function StoryView({ story, onBack, onImageClick }) {
 }
 
 function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
+  const isMobile =
+    typeof window !== "undefined" ? window.innerWidth <= 640 : false;
+
   return (
     <button
       onClick={() => {
@@ -1367,24 +1555,26 @@ function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
       }}
       style={{
         width: "100%",
+        maxWidth: "100%",
         background: PALETTE.paper,
         border: `1px solid ${PALETTE.line}`,
         borderRadius: "26px",
-        padding: "20px",
+        padding: isMobile ? "16px" : "22px",
         cursor: "pointer",
         boxShadow: "0 12px 28px rgba(48, 28, 14, 0.05)",
         textAlign: "left",
         overflow: "hidden",
+        boxSizing: "border-box",
       }}
     >
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: story.heroImage
-            ? "repeat(auto-fit, minmax(280px, 1fr))"
-            : "1fr",
-          gap: "20px",
+          gridTemplateColumns:
+            story.heroImage && !isMobile ? "280px minmax(0, 1fr)" : "1fr",
+          gap: isMobile ? "16px" : "22px",
           alignItems: "center",
+          width: "100%",
         }}
       >
         {story.heroImage && (
@@ -1393,7 +1583,8 @@ function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
             alt={story.title}
             style={{
               width: "100%",
-              height: "220px",
+              maxWidth: "100%",
+              height: isMobile ? "200px" : "220px",
               objectFit: "cover",
               borderRadius: "18px",
               display: "block",
@@ -1401,12 +1592,18 @@ function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
           />
         )}
 
-        <div style={{ minWidth: 0 }}>
+        <div
+          style={{
+            minWidth: 0,
+            width: "100%",
+            overflow: "hidden",
+          }}
+        >
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
-              alignItems: "flex-start",
+              alignItems: isMobile ? "flex-start" : "center",
               gap: "12px",
               flexWrap: "wrap",
               marginBottom: "10px",
@@ -1429,7 +1626,7 @@ function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
                 display: "flex",
                 gap: "8px",
                 flexWrap: "wrap",
-                justifyContent: "flex-end",
+                justifyContent: isMobile ? "flex-start" : "flex-end",
               }}
             >
               <Pill>{shortDate(story.date)}</Pill>
@@ -1439,13 +1636,17 @@ function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
 
           <div
             style={{
-              fontSize: "clamp(26px, 6vw, 42px)",
-              lineHeight: 0.98,
+              fontSize: isMobile
+                ? "clamp(18px, 8vw, 32px)"
+                : "clamp(26px, 3.4vw, 46px)",
+              lineHeight: 1.02,
               fontWeight: 900,
               textTransform: "uppercase",
               letterSpacing: "-0.04em",
               color: PALETTE.charcoal,
               marginBottom: "12px",
+              maxWidth: "100%",
+              overflowWrap: "anywhere",
               wordBreak: "break-word",
             }}
           >
@@ -1454,10 +1655,11 @@ function ArchiveCard({ story, onOpen, locked = false, onLockedClick }) {
 
           <div
             style={{
-              fontSize: "16px",
+              fontSize: isMobile ? "15px" : "17px",
               lineHeight: 1.7,
               color: PALETTE.textSoft,
-              maxWidth: "680px",
+              maxWidth: "100%",
+              overflowWrap: "break-word",
             }}
           >
             {locked
